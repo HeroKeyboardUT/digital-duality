@@ -1,39 +1,51 @@
-import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
 
 export function Footer() {
   const { theme, language } = useTheme();
-  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t-[2px] border-foreground bg-background">
-      <div className="container mx-auto px-2 py-3">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-[9px]">
-          <div className="flex items-center gap-4">
-            <span className="label-text">© {currentYear} DAO.ARCH</span>
-            <span className="text-muted-foreground">
-              {t(language, 'ALL SYSTEMS OPERATIONAL', 'TẤT CẢ HỆ THỐNG HOẠT ĐỘNG')}
-            </span>
+    <footer className="border-t-2 border-foreground bg-background py-12 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <div className="font-sans font-black text-2xl mb-4">
+              <span className={theme === 'dark' ? 'neon-text' : ''}>DMQ</span>
+              <span className="text-muted-foreground">.dev</span>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4 max-w-xs">
+              {t(language, 'Building digital infrastructure and crafting experiences.', 'Xây dựng hạ tầng số và tạo trải nghiệm.')}
+            </p>
+            <div className="flex gap-3">
+              {[Github, Linkedin, Twitter, Mail].map((Icon, i) => (
+                <motion.a key={i} href="#" className="p-2 border border-foreground/30 hover:border-foreground" whileHover={{ scale: 1.1 }}>
+                  <Icon size={16} />
+                </motion.a>
+              ))}
+            </div>
           </div>
-
-          <div className="flex items-center gap-4">
-            <span className="label-text">{t(language, 'BUILD', 'PHIÊN BẢN')}</span>
-            <span className={theme === 'dark' ? 'text-accent' : ''}>v2.4.7</span>
-            <span className="text-muted-foreground">|</span>
-            <span className="label-text">{t(language, 'LAST DEPLOY', 'TRIỂN KHAI CUỐI')}</span>
-            <span>2024.12.04</span>
+          <div>
+            <div className="label-text mb-4">{t(language, 'LINKS', 'LIÊN KẾT')}</div>
+            <nav className="space-y-2 text-sm">
+              <a href="#about" className="block hover:text-accent">{t(language, 'About', 'Giới Thiệu')}</a>
+              <a href="#projects" className="block hover:text-accent">{t(language, 'Projects', 'Dự Án')}</a>
+              <a href="#blog" className="block hover:text-accent">Blog</a>
+              <a href="#contact" className="block hover:text-accent">{t(language, 'Contact', 'Liên Hệ')}</a>
+            </nav>
           </div>
-
-          <motion.div
-            className="flex items-center gap-2"
-            animate={theme === 'dark' ? { opacity: [0.5, 1, 0.5] } : {}}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <span className={`w-2 h-2 rounded-full ${
-              theme === 'dark' ? 'bg-accent' : 'bg-foreground'
-            }`} />
-            <span>{t(language, 'MONITORING ACTIVE', 'GIÁM SÁT HOẠT ĐỘNG')}</span>
-          </motion.div>
+          <div>
+            <div className="label-text mb-4">{t(language, 'CONTACT', 'LIÊN LẠC')}</div>
+            <div className="space-y-2 text-sm">
+              <p>hello@daominhquan.dev</p>
+              <p>Hanoi, Vietnam</p>
+            </div>
+          </div>
+        </div>
+        <div className="pt-8 border-t border-foreground/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-muted-foreground">
+          <span>© {new Date().getFullYear()} DAO MINH QUAN</span>
+          <span className="flex items-center gap-1">{t(language, 'Built with', 'Xây dựng với')} <Heart size={10} className={theme === 'dark' ? 'text-accent' : ''} /> {t(language, 'in Hanoi', 'tại Hà Nội')}</span>
+          <span className="font-mono">v2.0.0 // {theme === 'light' ? 'ANALOGUE' : 'CYBER'}_MODE</span>
         </div>
       </div>
     </footer>
