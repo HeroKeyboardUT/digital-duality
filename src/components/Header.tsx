@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTheme, t } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import hcmutLogo from '@/assets/hcmut-logo.jpg';
 
 const navLinks = [
   { href: '#about', label: 'About', labelVn: 'Giới Thiệu' },
@@ -25,17 +26,18 @@ export function Header() {
   };
 
   return (
-    <header className="border-b-[2px] border-foreground bg-background sticky top-0 z-50">
+    <header className={`border-b-[2px] border-foreground bg-background sticky top-0 z-50 ${theme === 'dark' ? 'glow-border' : ''}`}>
       <div className="container mx-auto max-w-6xl">
         <div className="flex items-center justify-between h-14 px-4">
           {/* Logo */}
           <motion.a 
             href="#"
-            className="font-sans font-black text-lg tracking-tight"
+            className="flex items-center gap-2 font-sans font-black text-lg tracking-tight"
             whileHover={{ scale: 1.05 }}
           >
-            <span className={theme === 'dark' ? 'neon-text' : ''}>DMQ</span>
-            <span className="text-muted-foreground">.dev</span>
+            <img src={hcmutLogo} alt="HCMUT" className="w-8 h-8 object-contain" />
+            <span className={theme === 'dark' ? 'neon-text' : ''}>HIEU</span>
+            <span className={theme === 'dark' ? 'text-accent' : 'text-muted-foreground'}>DZ</span>
           </motion.a>
 
           {/* Desktop Nav */}
@@ -44,8 +46,8 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-xs font-bold uppercase tracking-wider hover:text-accent transition-colors ${
-                  theme === 'dark' ? 'hover:text-primary' : ''
+                className={`text-xs font-bold uppercase tracking-wider transition-colors ${
+                  theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
                 }`}
               >
                 {t(language, link.label, link.labelVn)}
@@ -56,7 +58,7 @@ export function Header() {
           {/* Right Side Controls */}
           <div className="flex items-center gap-3">
             {/* Time Display */}
-            <div className="hidden lg:flex items-center gap-2 text-[10px]">
+            <div className={`hidden lg:flex items-center gap-2 text-[10px] ${theme === 'dark' ? 'text-flicker' : ''}`}>
               <span className="label-text">UTC</span>
               <span className="font-mono tabular-nums">{formatTime(time)}</span>
             </div>
@@ -70,7 +72,9 @@ export function Header() {
             {/* Language Toggle */}
             <motion.button
               onClick={toggleLanguage}
-              className="px-2 py-1 border-2 border-foreground text-[10px] font-bold hover:bg-foreground hover:text-background transition-colors"
+              className={`px-2 py-1 border-2 border-foreground text-[10px] font-bold hover:bg-foreground hover:text-background transition-colors ${
+                theme === 'dark' ? 'cyber-btn' : ''
+              }`}
               whileTap={{ scale: 0.95 }}
             >
               {language === 'en' ? 'EN' : 'VN'}
@@ -80,7 +84,7 @@ export function Header() {
             <motion.button
               onClick={toggleTheme}
               className={`px-3 py-1 border-2 border-foreground text-[10px] font-bold hover:bg-foreground hover:text-background transition-colors ${
-                theme === 'dark' ? 'hover:shadow-[0_0_15px_hsl(180_100%_50%/0.5)]' : ''
+                theme === 'dark' ? 'cyber-btn pulse-border' : ''
               }`}
               whileTap={{ scale: 0.95 }}
             >
@@ -92,7 +96,7 @@ export function Header() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 border-2 border-foreground"
+              className={`md:hidden p-2 border-2 border-foreground ${theme === 'dark' ? 'cyber-btn' : ''}`}
               whileTap={{ scale: 0.95 }}
             >
               {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
