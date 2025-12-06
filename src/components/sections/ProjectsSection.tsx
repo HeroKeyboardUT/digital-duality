@@ -1,132 +1,99 @@
 import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, FileText } from 'lucide-react';
 
 interface Project {
   title: string;
   titleVn: string;
+  topic: string;
+  topicVn: string;
   description: string;
   descriptionVn: string;
-  year: string;
   tech: string[];
-  role: string;
-  roleVn: string;
-  status: 'ACTIVE' | 'ARCHIVED' | 'CLASSIFIED';
   featured?: boolean;
-  image?: string;
-  links?: { github?: string; live?: string };
+  links?: { github?: string; live?: string; pdf?: string };
 }
 
 const projects: Project[] = [
   {
-    title: 'Neural Commerce Engine',
-    titleVn: 'Động Cơ Thương Mại Neural',
-    description: 'AI-powered e-commerce platform processing 1M+ transactions daily. Built with microservices architecture and real-time inventory management.',
-    descriptionVn: 'Nền tảng thương mại điện tử AI xử lý 1M+ giao dịch mỗi ngày. Xây dựng với kiến trúc microservices và quản lý kho hàng thời gian thực.',
-    year: '2024',
-    tech: ['Next.js', 'Rust', 'PostgreSQL', 'Redis', 'Kafka'],
-    role: 'Lead Architect',
-    roleVn: 'Kiến Trúc Sư Trưởng',
-    status: 'ACTIVE',
+    title: 'Traveling Salesman Solver',
+    titleVn: 'Giải Bài Toán Người Bán Hàng',
+    topic: 'Discrete Structure, Graph, Branch and Bound',
+    topicVn: 'Cấu Trúc Rời Rạc, Đồ Thị, Nhánh Cận',
+    description: 'Finding the shortest path to visit all cities using Branch and Bound algorithm. Guaranteed optimal solution but high time complexity for large input (>20 cities).',
+    descriptionVn: 'Tìm đường đi ngắn nhất qua tất cả thành phố bằng thuật toán Nhánh Cận. Đảm bảo tối ưu nhưng độ phức tạp cao với đầu vào lớn (>20 thành phố).',
+    tech: ['C++', 'JavaScript', 'HTML', 'CSS'],
     featured: true,
-    links: { github: '#', live: '#' },
   },
   {
-    title: 'Distributed Log System',
-    titleVn: 'Hệ Thống Log Phân Tán',
-    description: 'High-throughput logging infrastructure handling 500K events/sec with real-time search and analytics capabilities.',
-    descriptionVn: 'Hạ tầng logging thông lượng cao xử lý 500K sự kiện/giây với khả năng tìm kiếm và phân tích thời gian thực.',
-    year: '2023',
-    tech: ['Go', 'Kafka', 'Kubernetes', 'Elasticsearch'],
-    role: 'System Designer',
-    roleVn: 'Thiết Kế Hệ Thống',
-    status: 'ACTIVE',
+    title: 'Quiz App',
+    titleVn: 'Ứng Dụng Quiz',
+    topic: 'Side Project, Practice, Quiz, Test',
+    topicVn: 'Dự Án Phụ, Luyện Tập, Trắc Nghiệm',
+    description: 'Simple quiz app for practicing and testing knowledge with custom questions. Easy to use interface.',
+    descriptionVn: 'Ứng dụng quiz đơn giản để luyện tập và kiểm tra kiến thức với câu hỏi tùy chỉnh.',
+    tech: ['JavaScript', 'HTML', 'CSS'],
+  },
+  {
+    title: 'Cutting Stock Problem',
+    titleVn: 'Bài Toán Cắt Vật Liệu',
+    topic: 'Math Modelling, Integer Linear Programming, Optimization',
+    topicVn: 'Mô Hình Toán, Quy Hoạch Tuyến Tính, Tối Ưu',
+    description: 'Cutting stock into pieces to minimize waste using First Fit Decreasing algorithm. Suitable for large input with low time complexity.',
+    descriptionVn: 'Cắt vật liệu thành các mảnh để giảm thiểu lãng phí bằng thuật toán First Fit Decreasing.',
+    tech: ['JavaScript', 'Python', 'HTML', 'CSS'],
+  },
+  {
+    title: 'HCMUT CSE Internship Crawler',
+    titleVn: 'Crawler Thực Tập CSE HCMUT',
+    topic: 'Data Crawling, Web Scraping, Useful Tool',
+    topicVn: 'Thu Thập Dữ Liệu, Web Scraping, Công Cụ Hữu Ích',
+    description: 'Data crawling tool with ReactJS frontend and NodeJS backend. Features data processing and nice display after crawling.',
+    descriptionVn: 'Công cụ thu thập dữ liệu với frontend ReactJS và backend NodeJS. Có xử lý và hiển thị dữ liệu sau khi crawl.',
+    tech: ['ReactJS', 'NodeJS', 'TailwindCSS'],
     featured: true,
-    links: { github: '#' },
+    links: { github: 'https://github.com/HeroKeyboardUT/HCMUT-CSE-Internship-Crawler' },
   },
   {
-    title: 'Real-time Analytics Dashboard',
-    titleVn: 'Dashboard Phân Tích Thời Gian Thực',
-    description: 'Interactive analytics platform with live data visualization, custom metrics tracking, and automated reporting.',
-    descriptionVn: 'Nền tảng phân tích tương tác với trực quan hóa dữ liệu trực tiếp, theo dõi metrics tùy chỉnh và báo cáo tự động.',
-    year: '2023',
-    tech: ['React', 'Python', 'Clickhouse', 'WebSocket'],
-    role: 'Full-Stack Developer',
-    roleVn: 'Lập Trình Viên Full-Stack',
-    status: 'ACTIVE',
-    links: { live: '#' },
+    title: 'Cinema Management System',
+    titleVn: 'Hệ Thống Quản Lý Rạp Chiếu Phim',
+    topic: 'Fullstack, Booking System, Real-time Dashboard',
+    topicVn: 'Fullstack, Hệ Thống Đặt Vé, Dashboard Thời Gian Thực',
+    description: 'Fullstack web app for cinema operations: booking, administration, and real-time dashboards. One of my most complex projects.',
+    descriptionVn: 'Ứng dụng web fullstack quản lý rạp phim: đặt vé, quản trị, dashboard thời gian thực. Một trong những dự án phức tạp nhất.',
+    tech: ['ReactJS', 'NodeJS', 'ExpressJS', 'TailwindCSS'],
+    featured: true,
+    links: { github: 'https://github.com/HeroKeyboardUT/cine-verse-ticket-hub' },
   },
   {
-    title: 'Crypto Trading Bot',
-    titleVn: 'Bot Giao Dịch Crypto',
-    description: 'Automated trading system with ML-based prediction models achieving 40% annual returns with risk management.',
-    descriptionVn: 'Hệ thống giao dịch tự động với mô hình dự đoán ML đạt lợi nhuận 40%/năm với quản lý rủi ro.',
-    year: '2023',
-    tech: ['Python', 'TensorFlow', 'Redis', 'WebSocket'],
-    role: 'ML Engineer',
-    roleVn: 'Kỹ Sư ML',
-    status: 'ARCHIVED',
+    title: 'Chat App - Social App',
+    titleVn: 'Ứng Dụng Chat - Mạng Xã Hội',
+    topic: 'Fullstack, Real-time Chat, Video Call',
+    topicVn: 'Fullstack, Chat Thời Gian Thực, Video Call',
+    description: 'Fullstack social web app with real-time messaging, video calls, friend management, and customizable theme colors.',
+    descriptionVn: 'Ứng dụng mạng xã hội fullstack với chat thời gian thực, video call, quản lý bạn bè, và tùy chỉnh giao diện.',
+    tech: ['ReactJS', 'ExpressJS', 'MongoDB', 'TailwindCSS'],
+    featured: true,
+    links: { github: 'https://github.com/HeroKeyboardUT/chatapp' },
   },
   {
-    title: 'IoT Fleet Management',
-    titleVn: 'Quản Lý Đội Xe IoT',
-    description: 'Real-time vehicle tracking and management platform for logistics company with 5000+ vehicles.',
-    descriptionVn: 'Nền tảng theo dõi và quản lý xe thời gian thực cho công ty logistics với 5000+ phương tiện.',
-    year: '2022',
-    tech: ['Node.js', 'MQTT', 'MongoDB', 'React Native'],
-    role: 'Backend Lead',
-    roleVn: 'Trưởng Nhóm Backend',
-    status: 'ARCHIVED',
-  },
-  {
-    title: 'Project CHIMERA',
-    titleVn: 'Dự Án CHIMERA',
-    description: 'Confidential project for government client. Advanced security systems and encrypted communication protocols.',
-    descriptionVn: 'Dự án bảo mật cho khách hàng chính phủ. Hệ thống bảo mật nâng cao và giao thức liên lạc mã hóa.',
-    year: '2024',
-    tech: ['[REDACTED]'],
-    role: 'Security Consultant',
-    roleVn: 'Tư Vấn Bảo Mật',
-    status: 'CLASSIFIED',
-  },
-  {
-    title: 'Social Media Aggregator',
-    titleVn: 'Tổng Hợp Mạng Xã Hội',
-    description: 'Unified social media management tool with AI-powered content scheduling and analytics.',
-    descriptionVn: 'Công cụ quản lý mạng xã hội hợp nhất với lịch đăng bài AI và phân tích.',
-    year: '2022',
-    tech: ['Vue.js', 'FastAPI', 'PostgreSQL', 'Redis'],
-    role: 'Full-Stack Developer',
-    roleVn: 'Lập Trình Viên Full-Stack',
-    status: 'ARCHIVED',
-  },
-  {
-    title: 'Fintech Payment Gateway',
-    titleVn: 'Cổng Thanh Toán Fintech',
-    description: 'PCI-compliant payment processing system handling millions in daily transactions across Southeast Asia.',
-    descriptionVn: 'Hệ thống xử lý thanh toán tuân thủ PCI xử lý hàng triệu giao dịch mỗi ngày trên khắp Đông Nam Á.',
-    year: '2021',
-    tech: ['Java', 'Spring Boot', 'Oracle', 'Kubernetes'],
-    role: 'Backend Developer',
-    roleVn: 'Lập Trình Viên Backend',
-    status: 'ARCHIVED',
+    title: 'Emotion Detection AI',
+    titleVn: 'AI Nhận Diện Cảm Xúc',
+    topic: 'AI, Deep Learning, CNN, Computer Vision',
+    topicVn: 'AI, Deep Learning, CNN, Thị Giác Máy Tính',
+    description: 'Human emotion detection using deep learning and Convolutional Neural Networks. Demonstrates AI concepts and practical implementation.',
+    descriptionVn: 'Nhận diện cảm xúc con người bằng deep learning và CNN. Thể hiện kiến thức AI và triển khai thực tế.',
+    tech: ['Python', 'TensorFlow', 'CNN'],
+    featured: true,
+    links: { 
+      github: 'https://github.com/TechWizGroup/Emotion_detection/tree/Hieu',
+      pdf: './image/Emotional_detection.pdf'
+    },
   },
 ];
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { theme, language } = useTheme();
-
-  const statusColors = {
-    ACTIVE: theme === 'dark' ? 'text-accent' : 'text-foreground',
-    ARCHIVED: 'text-muted-foreground',
-    CLASSIFIED: theme === 'dark' ? 'text-primary' : 'text-foreground',
-  };
-
-  const statusLabels = {
-    ACTIVE: t(language, 'ACTIVE', 'HOẠT ĐỘNG'),
-    ARCHIVED: t(language, 'ARCHIVED', 'LƯU TRỮ'),
-    CLASSIFIED: t(language, 'CLASSIFIED', 'MẬT'),
-  };
 
   return (
     <motion.article
@@ -139,19 +106,23 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Header */}
       <div className="flex justify-between items-start mb-3">
         <div className="label-text">
-          PRJ-{String(index + 1).padStart(3, '0')} // {project.year}
+          PRJ-{String(index + 1).padStart(3, '0')}
         </div>
-        <span className={`text-[9px] ${statusColors[project.status]}`}>
-          [{statusLabels[project.status]}]
-        </span>
+        {project.featured && (
+          <span className={`text-[9px] ${theme === 'dark' ? 'text-accent' : 'text-foreground'}`}>
+            [FEATURED]
+          </span>
+        )}
       </div>
 
-      {/* Title & Role */}
+      {/* Title */}
       <h3 className={`font-sans font-bold text-lg mb-1 ${theme === 'dark' ? 'text-flicker' : ''}`}>
         {t(language, project.title, project.titleVn)}
       </h3>
+      
+      {/* Topic */}
       <div className={`text-[10px] mb-3 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`}>
-        {t(language, project.role, project.roleVn)}
+        {t(language, project.topic, project.topicVn)}
       </div>
 
       {/* Description */}
@@ -179,7 +150,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.links.github && (
             <a
               href={project.links.github}
-              className="flex items-center gap-1 text-[10px] hover:text-accent transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-1 text-[10px] transition-colors ${
+                theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
+              }`}
             >
               <Github size={12} /> CODE
             </a>
@@ -187,9 +162,25 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.links.live && (
             <a
               href={project.links.live}
-              className="flex items-center gap-1 text-[10px] hover:text-accent transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-1 text-[10px] transition-colors ${
+                theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
+              }`}
             >
               <ExternalLink size={12} /> LIVE
+            </a>
+          )}
+          {project.links.pdf && (
+            <a
+              href={project.links.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-1 text-[10px] transition-colors ${
+                theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
+              }`}
+            >
+              <FileText size={12} /> REPORT
             </a>
           )}
         </div>
@@ -202,7 +193,7 @@ export function ProjectsSection() {
   const { theme, language } = useTheme();
 
   return (
-    <section id="projects" className="py-20 px-4 border-t-2 border-foreground">
+    <section id="projects" className={`py-20 px-4 border-t-2 border-foreground ${theme === 'dark' ? 'hex-pattern' : ''}`}>
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
@@ -213,12 +204,12 @@ export function ProjectsSection() {
         >
           <div className="label-text mb-2">02 // {t(language, 'PROJECTS', 'DỰ ÁN')}</div>
           <h2 className={`text-4xl sm:text-5xl font-sans font-black mb-4 ${theme === 'dark' ? 'neon-text' : ''}`}>
-            {t(language, 'SELECTED WORKS', 'CÁC CÔNG TRÌNH')}
+            {t(language, 'MY WORKS', 'CÁC CÔNG TRÌNH')}
           </h2>
           <p className="text-sm max-w-2xl">
             {t(language,
-              'A curated selection of projects spanning enterprise solutions, open-source contributions, and experimental explorations.',
-              'Tuyển chọn các dự án từ giải pháp doanh nghiệp, đóng góp mã nguồn mở, đến các thử nghiệm khám phá.'
+              'These are projects from subjects I studied and personal projects. I modelized them to display on this website.',
+              'Đây là các dự án từ các môn học và dự án cá nhân. Tôi đã mô hình hóa để hiển thị trên website này.'
             )}
           </p>
         </motion.div>
@@ -238,12 +229,14 @@ export function ProjectsSection() {
           viewport={{ once: true }}
         >
           <a
-            href="#"
+            href="https://github.com/HeroKeyboardUT"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 px-6 py-3 border-2 border-foreground text-sm font-bold hover:bg-foreground hover:text-background transition-colors ${
-              theme === 'dark' ? 'hover:shadow-[0_0_20px_hsl(180_100%_50%/0.5)]' : ''
+              theme === 'dark' ? 'cyber-btn' : ''
             }`}
           >
-            {t(language, 'VIEW ALL PROJECTS', 'XEM TẤT CẢ DỰ ÁN')}
+            {t(language, 'VIEW ALL ON GITHUB', 'XEM TẤT CẢ TRÊN GITHUB')}
             <ArrowUpRight size={16} />
           </a>
         </motion.div>

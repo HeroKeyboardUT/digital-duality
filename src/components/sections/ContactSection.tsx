@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
-import { Mail, MapPin, Clock, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Clock, Send, Github, Linkedin, Phone } from 'lucide-react';
 import { useState } from 'react';
 
 export function ContactSection() {
@@ -9,12 +9,14 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission
+    // Open email client with pre-filled data
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:phamquanghieulop95@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="contact" className="py-20 px-4 border-t-2 border-foreground">
+    <section id="contact" className={`py-20 px-4 border-t-2 border-foreground ${theme === 'dark' ? 'hex-pattern' : ''}`}>
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
@@ -29,8 +31,8 @@ export function ContactSection() {
           </h2>
           <p className="text-sm max-w-2xl">
             {t(language,
-              "Have a project in mind or want to collaborate? I'm always open to discussing new opportunities and ideas.",
-              "Có dự án trong đầu hoặc muốn hợp tác? Tôi luôn sẵn sàng thảo luận cơ hội và ý tưởng mới."
+              "Looking for an internship opportunity to improve my skills and gain experience. Feel free to reach out!",
+              "Đang tìm kiếm cơ hội thực tập để nâng cao kỹ năng và tích lũy kinh nghiệm. Hãy liên hệ với tôi!"
             )}
           </p>
         </motion.div>
@@ -38,7 +40,7 @@ export function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
           <motion.div
-            className="grid-cell"
+            className={`grid-cell ${theme === 'dark' ? 'glow-border' : ''}`}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -91,7 +93,7 @@ export function ContactSection() {
               <motion.button
                 type="submit"
                 className={`w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-foreground font-bold text-sm hover:bg-foreground hover:text-background transition-colors ${
-                  theme === 'dark' ? 'hover:shadow-[0_0_20px_hsl(180_100%_50%/0.5)]' : ''
+                  theme === 'dark' ? 'cyber-btn' : ''
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -106,7 +108,7 @@ export function ContactSection() {
           <div className="space-y-4">
             {/* Quick Info Cards */}
             <motion.div
-              className="grid-cell"
+              className={`grid-cell ${theme === 'dark' ? 'glow-border' : ''}`}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -115,28 +117,36 @@ export function ContactSection() {
               
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Mail size={16} className={theme === 'dark' ? 'text-accent' : ''} />
+                  <Mail size={16} className={theme === 'dark' ? 'text-accent shrink-0' : 'shrink-0'} />
                   <div>
                     <div className="text-[10px] text-muted-foreground">{t(language, 'EMAIL', 'EMAIL')}</div>
-                    <a href="mailto:hello@daominhquan.dev" className="text-sm hover:underline">
-                      hello@daominhquan.dev
+                    <a href="mailto:phamquanghieulop95@gmail.com" className="text-sm hover:underline">
+                      phamquanghieulop95@gmail.com
                     </a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
-                  <MapPin size={16} className={theme === 'dark' ? 'text-accent' : ''} />
+                  <Phone size={16} className={theme === 'dark' ? 'text-accent shrink-0' : 'shrink-0'} />
                   <div>
-                    <div className="text-[10px] text-muted-foreground">{t(language, 'LOCATION', 'VỊ TRÍ')}</div>
-                    <div className="text-sm">Hanoi, Vietnam</div>
+                    <div className="text-[10px] text-muted-foreground">{t(language, 'PHONE', 'ĐIỆN THOẠI')}</div>
+                    <a href="tel:0397961039" className="text-sm hover:underline">0397961039</a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
-                  <Clock size={16} className={theme === 'dark' ? 'text-accent' : ''} />
+                  <MapPin size={16} className={theme === 'dark' ? 'text-accent shrink-0' : 'shrink-0'} />
+                  <div>
+                    <div className="text-[10px] text-muted-foreground">{t(language, 'LOCATION', 'VỊ TRÍ')}</div>
+                    <div className="text-sm">Bien Hoa City, Vietnam</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <Clock size={16} className={theme === 'dark' ? 'text-accent shrink-0' : 'shrink-0'} />
                   <div>
                     <div className="text-[10px] text-muted-foreground">{t(language, 'TIMEZONE', 'MÚI GIỜ')}</div>
-                    <div className="text-sm">UTC+7 (ICT) • 09:00 - 18:00</div>
+                    <div className="text-sm">UTC+7 (ICT)</div>
                   </div>
                 </div>
               </div>
@@ -144,7 +154,7 @@ export function ContactSection() {
 
             {/* Social Links */}
             <motion.div
-              className="grid-cell"
+              className={`grid-cell ${theme === 'dark' ? 'glow-border' : ''}`}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -152,17 +162,18 @@ export function ContactSection() {
             >
               <div className="label-text mb-3">{t(language, 'CONNECT', 'KẾT NỐI')}</div>
               
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 {[
-                  { icon: Github, label: 'GitHub', handle: '@daominhquan', href: '#' },
-                  { icon: Linkedin, label: 'LinkedIn', handle: '/in/daominhquan', href: '#' },
-                  { icon: Twitter, label: 'Twitter', handle: '@dmqdev', href: '#' },
+                  { icon: Github, label: 'GitHub', handle: '@HeroKeyboardUT', href: 'https://github.com/HeroKeyboardUT' },
+                  { icon: Linkedin, label: 'LinkedIn', handle: '/phamquanghieuutcs', href: 'https://www.linkedin.com/in/phamquanghieuutcs/' },
                 ].map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
-                    className={`flex flex-col items-center p-3 border border-foreground/30 hover:border-foreground transition-colors ${
-                      theme === 'dark' ? 'hover:border-accent hover:shadow-[0_0_10px_hsl(180_100%_50%/0.3)]' : ''
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex flex-col items-center p-3 border border-foreground/30 hover:border-foreground transition-all ${
+                      theme === 'dark' ? 'hover:border-accent hover:shadow-[0_0_10px_hsl(180_100%_50%/0.3)]' : 'hover:bg-foreground hover:text-background'
                     }`}
                   >
                     <social.icon size={20} className="mb-2" />
@@ -175,7 +186,7 @@ export function ContactSection() {
 
             {/* Availability */}
             <motion.div
-              className="grid-cell"
+              className={`grid-cell ${theme === 'dark' ? 'glow-border' : ''}`}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -183,16 +194,16 @@ export function ContactSection() {
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="status-online" />
-                <span className="label-text">{t(language, 'CURRENT AVAILABILITY', 'SẴN SÀNG HIỆN TẠI')}</span>
+                <span className="label-text">{t(language, 'CURRENT STATUS', 'TRẠNG THÁI HIỆN TẠI')}</span>
               </div>
               
-              <p className="text-sm font-bold mb-2">
-                {t(language, 'Open for Projects', 'Đang Nhận Dự Án')}
+              <p className={`text-sm font-bold mb-2 ${theme === 'dark' ? 'text-flicker' : ''}`}>
+                {t(language, 'Looking for Internship', 'Đang Tìm Thực Tập')}
               </p>
               <p className="text-[11px] text-muted-foreground">
                 {t(language,
-                  'Q1 2025 slots available. Interested in full-time opportunities, consulting, or freelance projects.',
-                  'Còn slot Q1 2025. Quan tâm đến cơ hội toàn thời gian, tư vấn, hoặc dự án freelance.'
+                  'Seeking internship opportunities to improve skills and gain experience in software development.',
+                  'Tìm kiếm cơ hội thực tập để nâng cao kỹ năng và tích lũy kinh nghiệm trong phát triển phần mềm.'
                 )}
               </p>
             </motion.div>

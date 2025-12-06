@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -30,8 +30,8 @@
 
     /* Custom tokens */
     --grid-border: 2px;
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Share Tech Mono', monospace;
+    --font-sans: 'Rajdhani', 'Inter', sans-serif;
   }
 
   .dark {
@@ -59,6 +59,8 @@
     /* Neon colors */
     --neon-cyan: 180 100% 50%;
     --neon-green: 120 100% 50%;
+    --neon-pink: 320 100% 60%;
+    --neon-purple: 270 100% 60%;
     --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3);
     --glow-green: 0 0 20px hsl(120 100% 50% / 0.5), 0 0 40px hsl(120 100% 50% / 0.3);
   }
@@ -80,31 +82,42 @@
 }
 
 @layer components {
-  /* Brutalist grid cell */
+  /* Brutalist grid cell - FIXED HOVER ISSUE */
   .grid-cell {
     @apply border-[2px] border-foreground bg-background p-3 overflow-hidden relative;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
   }
 
   .grid-cell:hover {
-    @apply bg-foreground text-background;
+    @apply bg-foreground;
+  }
+
+  .grid-cell:hover,
+  .grid-cell:hover * {
+    @apply text-background;
   }
 
   .grid-cell:hover .label-text {
     @apply text-background/70;
   }
 
+  /* Dark mode grid cell - FIXED */
   .dark .grid-cell {
-    @apply border-primary/60 bg-card;
+    @apply border-primary/60 bg-card text-foreground;
     box-shadow: inset 0 0 30px hsl(180 100% 50% / 0.03);
   }
 
   .dark .grid-cell:hover {
     box-shadow: 
-      0 0 20px hsl(180 100% 50% / 0.3),
-      0 0 40px hsl(180 100% 50% / 0.1),
-      inset 0 0 50px hsl(180 100% 50% / 0.05);
+      0 0 30px hsl(180 100% 50% / 0.4),
+      0 0 60px hsl(180 100% 50% / 0.2),
+      inset 0 0 50px hsl(180 100% 50% / 0.1);
     @apply bg-card border-primary;
+  }
+
+  .dark .grid-cell:hover,
+  .dark .grid-cell:hover * {
+    @apply text-foreground;
   }
 
   .dark .grid-cell:hover .label-text {
@@ -126,18 +139,48 @@
     z-index: 9999;
   }
 
-  /* Text flicker animation */
+  /* Matrix rain effect */
+  @keyframes matrix-rain {
+    0% { transform: translateY(-100vh); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .matrix-column {
+    position: absolute;
+    top: -100%;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: hsl(var(--neon-green));
+    text-shadow: 0 0 10px hsl(var(--neon-green));
+    animation: matrix-rain linear infinite;
+    opacity: 0.3;
+  }
+
+  /* Text flicker animation - Enhanced */
   @keyframes flicker {
     0%, 100% { opacity: 1; }
     92% { opacity: 1; }
-    93% { opacity: 0.8; }
+    93% { opacity: 0.7; }
     94% { opacity: 1; }
-    97% { opacity: 0.9; }
+    95% { opacity: 0.9; }
+    96% { opacity: 1; }
+    97% { opacity: 0.8; }
     98% { opacity: 1; }
   }
 
   .text-flicker {
-    animation: flicker 3s infinite;
+    animation: flicker 2s infinite;
   }
 
   /* Blinking cursor */
@@ -149,9 +192,10 @@
   .cursor-blink::after {
     content: '█';
     animation: blink 1s infinite;
+    color: hsl(var(--neon-cyan));
   }
 
-  /* Glitch effect */
+  /* Glitch effect - Enhanced */
   @keyframes glitch-1 {
     0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
     20% { clip-path: inset(20% 0 60% 0); transform: translate(-5px, 2px); }
@@ -203,6 +247,57 @@
       0 0 40px currentColor;
   }
 
+  /* Holographic shimmer */
+  @keyframes holographic {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .dark .holographic-border {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--neon-cyan)),
+      hsl(var(--neon-green)),
+      hsl(var(--neon-pink)),
+      hsl(var(--neon-cyan))
+    );
+    background-size: 300% 100%;
+    animation: holographic 3s ease infinite;
+  }
+
+  /* Scan line effect */
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  .scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--neon-cyan)), transparent);
+    animation: scan 3s linear infinite;
+    opacity: 0.5;
+  }
+
+  /* Pulse border */
+  @keyframes pulse-border {
+    0%, 100% { 
+      border-color: hsl(var(--neon-cyan));
+      box-shadow: 0 0 5px hsl(var(--neon-cyan) / 0.5);
+    }
+    50% { 
+      border-color: hsl(var(--neon-green));
+      box-shadow: 0 0 20px hsl(var(--neon-green) / 0.5);
+    }
+  }
+
+  .dark .pulse-border {
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
   /* Data stream animation */
   @keyframes datastream {
     0% { transform: translateY(-100%); }
@@ -220,6 +315,18 @@
     animation: pulse-glow 2s infinite;
   }
 
+  /* Typing effect */
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  .typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end);
+  }
+
   /* Dense text styling */
   .dense-text {
     @apply text-[10px] leading-tight tracking-tight;
@@ -227,6 +334,46 @@
 
   .label-text {
     @apply text-[8px] uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  /* Hexagon pattern for dark mode */
+  .dark .hex-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%2300f3ff' fill-opacity='0.03'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Glowing border animation */
+  @keyframes glow-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 5px hsl(var(--neon-cyan) / 0.3), inset 0 0 5px hsl(var(--neon-cyan) / 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5), inset 0 0 10px hsl(var(--neon-cyan) / 0.2);
+    }
+  }
+
+  .dark .glow-border {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Cyber button hover */
+  .dark .cyber-btn:hover {
+    box-shadow: 
+      0 0 10px hsl(var(--neon-cyan)),
+      0 0 20px hsl(var(--neon-cyan) / 0.5),
+      0 0 30px hsl(var(--neon-cyan) / 0.3),
+      inset 0 0 10px hsl(var(--neon-cyan) / 0.2);
+  }
+
+  /* Distortion effect */
+  @keyframes distort {
+    0%, 100% { transform: skewX(0deg); }
+    25% { transform: skewX(1deg); }
+    50% { transform: skewX(-1deg); }
+    75% { transform: skewX(0.5deg); }
+  }
+
+  .dark .distort:hover {
+    animation: distort 0.3s ease infinite;
   }
 }
 
@@ -237,5 +384,13 @@
 
   .font-sans {
     font-family: var(--font-sans);
+  }
+
+  /* Text gradient for cyber mode */
+  .dark .text-gradient {
+    background: linear-gradient(90deg, hsl(var(--neon-cyan)), hsl(var(--neon-green)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
