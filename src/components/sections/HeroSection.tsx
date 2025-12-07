@@ -7,7 +7,7 @@ export function HeroSection() {
   const { theme, language } = useTheme();
 
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center relative py-20 px-4 overflow-hidden">
+    <section id="hero" className="min-h-[90vh] flex flex-col justify-center relative py-20 px-4 overflow-hidden">
       {/* Background Effects for Cyber Mode */}
       {theme === 'dark' && (
         <>
@@ -163,9 +163,9 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Side - Large Logo */}
+          {/* Right Side - Large Logo - Moved Up */}
           <motion.div
-            className="hidden lg:flex justify-center items-center relative"
+            className="hidden lg:flex justify-center items-start relative -mt-16"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -178,10 +178,22 @@ export function HeroSection() {
                 </div>
               )}
               
+              {/* Decorative border frame */}
+              <div className={`absolute -inset-4 ${
+                theme === 'dark' 
+                  ? 'border-2 border-primary/30 animate-pulse' 
+                  : 'border-2 border-foreground/10'
+              }`}>
+                <div className={`absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 ${theme === 'dark' ? 'border-accent' : 'border-foreground'}`} />
+                <div className={`absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 ${theme === 'dark' ? 'border-accent' : 'border-foreground'}`} />
+                <div className={`absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 ${theme === 'dark' ? 'border-accent' : 'border-foreground'}`} />
+                <div className={`absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 ${theme === 'dark' ? 'border-accent' : 'border-foreground'}`} />
+              </div>
+              
               <motion.img
                 src={hcmutLogo}
                 alt="HCMUT Logo"
-                className={`w-64 h-64 md:w-80 md:h-80 object-contain relative z-10 ${
+                className={`w-72 h-72 md:w-96 md:h-96 object-contain relative z-10 ${
                   theme === 'dark' 
                     ? 'filter brightness-110 drop-shadow-[0_0_30px_hsl(var(--neon-cyan)/0.5)]' 
                     : 'opacity-90'
@@ -200,23 +212,27 @@ export function HeroSection() {
               {theme === 'dark' && (
                 <>
                   <motion.div
-                    className="absolute w-3 h-3 bg-primary rounded-full"
-                    animate={{
-                      rotate: 360,
-                    }}
+                    className="absolute w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_hsl(var(--neon-cyan))]"
+                    animate={{ rotate: 360 }}
                     transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                    style={{ transformOrigin: '160px 160px', left: '50%', top: '0' }}
+                    style={{ transformOrigin: '192px 192px', left: '50%', top: '0' }}
                   />
                   <motion.div
-                    className="absolute w-2 h-2 bg-accent rounded-full"
-                    animate={{
-                      rotate: -360,
-                    }}
+                    className="absolute w-2 h-2 bg-accent rounded-full shadow-[0_0_10px_hsl(var(--neon-green))]"
+                    animate={{ rotate: -360 }}
                     transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-                    style={{ transformOrigin: '180px 180px', left: '50%', top: '50%' }}
+                    style={{ transformOrigin: '220px 220px', left: '50%', top: '50%' }}
                   />
                 </>
               )}
+
+              {/* Label under logo */}
+              <div className={`absolute -bottom-8 left-1/2 -translate-x-1/2 text-center ${
+                theme === 'dark' ? 'text-primary/70' : 'text-muted-foreground'
+              }`}>
+                <div className="text-[8px] tracking-widest">VNU-HCM</div>
+                <div className="text-[10px] font-bold">BACH KHOA</div>
+              </div>
             </div>
           </motion.div>
         </div>
