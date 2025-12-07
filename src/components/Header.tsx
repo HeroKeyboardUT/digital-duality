@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme, t } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import hcmutLogo from '@/assets/hcmut-logo.jpg';
+import { Menu, X, Terminal, Cpu } from 'lucide-react';
 
 const navLinks = [
   { href: '#about', label: 'About', labelVn: 'Giới Thiệu' },
@@ -29,13 +28,17 @@ export function Header() {
     <header className={`border-b-[2px] border-foreground bg-background sticky top-0 z-50 ${theme === 'dark' ? 'glow-border' : ''}`}>
       <div className="container mx-auto max-w-6xl">
         <div className="flex items-center justify-between h-14 px-4">
-          {/* Logo */}
+          {/* Logo - Text Only */}
           <motion.a 
             href="#"
             className="flex items-center gap-2 font-sans font-black text-lg tracking-tight"
             whileHover={{ scale: 1.05 }}
           >
-            <img src={hcmutLogo} alt="HCMUT" className="w-8 h-8 object-contain" />
+            {theme === 'dark' ? (
+              <Terminal size={20} className="text-accent" />
+            ) : (
+              <Cpu size={20} />
+            )}
             <span className={theme === 'dark' ? 'neon-text' : ''}>HIEU</span>
             <span className={theme === 'dark' ? 'text-accent' : 'text-muted-foreground'}>DZ</span>
           </motion.a>
@@ -43,15 +46,19 @@ export function Header() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <motion.a
                 key={link.href}
                 href={link.href}
-                className={`text-xs font-bold uppercase tracking-wider transition-colors ${
+                className={`text-xs font-bold uppercase tracking-wider transition-colors relative group ${
                   theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
                 }`}
+                whileHover={{ y: -2 }}
               >
                 {t(language, link.label, link.labelVn)}
-              </a>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                  theme === 'dark' ? 'bg-accent' : 'bg-foreground'
+                }`} />
+              </motion.a>
             ))}
           </nav>
 
@@ -72,8 +79,10 @@ export function Header() {
             {/* Language Toggle */}
             <motion.button
               onClick={toggleLanguage}
-              className={`px-2 py-1 border-2 border-foreground text-[10px] font-bold hover:bg-foreground hover:text-background transition-colors ${
-                theme === 'dark' ? 'cyber-btn' : ''
+              className={`px-2 py-1 border-2 border-foreground text-[10px] font-bold transition-all ${
+                theme === 'dark' 
+                  ? 'cyber-btn hover:shadow-[0_0_15px_hsl(var(--neon-cyan))]' 
+                  : 'hover:bg-foreground hover:text-background'
               }`}
               whileTap={{ scale: 0.95 }}
             >
@@ -83,8 +92,10 @@ export function Header() {
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
-              className={`px-3 py-1 border-2 border-foreground text-[10px] font-bold hover:bg-foreground hover:text-background transition-colors ${
-                theme === 'dark' ? 'cyber-btn pulse-border' : ''
+              className={`px-3 py-1 border-2 border-foreground text-[10px] font-bold transition-all ${
+                theme === 'dark' 
+                  ? 'cyber-btn pulse-border hover:shadow-[0_0_20px_hsl(var(--neon-cyan))]' 
+                  : 'hover:bg-foreground hover:text-background'
               }`}
               whileTap={{ scale: 0.95 }}
             >
@@ -117,7 +128,11 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-sm font-bold uppercase border-b border-foreground/20 hover:bg-foreground hover:text-background transition-colors"
+                className={`block px-4 py-3 text-sm font-bold uppercase border-b border-foreground/20 transition-colors ${
+                  theme === 'dark' 
+                    ? 'hover:bg-primary/10 hover:text-accent' 
+                    : 'hover:bg-foreground hover:text-background'
+                }`}
               >
                 {t(language, link.label, link.labelVn)}
               </a>
