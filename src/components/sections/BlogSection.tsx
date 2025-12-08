@@ -78,6 +78,8 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
+const blogIds = ['distributed-systems', 'clean-code', 'kafka-rust', 'brutalist-design', 'kubernetes', 'typescript-patterns'];
+
 function BlogCard({ post, index }: { post: BlogPost; index: number }) {
   const { theme, language } = useTheme();
 
@@ -92,27 +94,27 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
       {/* Header */}
       <div className="flex justify-between items-start mb-3">
         <div className="label-text">{post.date}</div>
-        <div className="flex items-center gap-3 text-[9px] text-muted-foreground">
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
           <span className="flex items-center gap-1">
-            <Clock size={10} /> {post.readTime}
+            <Clock size={12} /> {post.readTime}
           </span>
           <span className="flex items-center gap-1">
-            <Eye size={10} /> {post.views}
+            <Eye size={12} /> {post.views}
           </span>
         </div>
       </div>
 
       {/* Title */}
-      <h3 className={`font-sans font-bold ${post.featured ? 'text-xl md:text-2xl' : 'text-sm'} mb-2 ${
+      <h3 className={`font-sans font-bold ${post.featured ? 'text-2xl md:text-3xl' : 'text-lg'} mb-2 ${
         theme === 'dark' ? 'text-flicker hover:text-accent' : ''
       } transition-colors`}>
-        <a href="#" className="hover:underline">
+        <a href={`/blog/${blogIds[index]}`} className="hover:underline">
           {t(language, post.title, post.titleVn)}
         </a>
       </h3>
 
       {/* Excerpt */}
-      <p className={`text-[11px] leading-relaxed mb-4 flex-1 ${post.featured ? 'text-sm' : ''}`}>
+      <p className={`text-base leading-relaxed mb-4 flex-1 ${post.featured ? 'text-lg' : ''}`}>
         {t(language, post.excerpt, post.excerptVn)}
       </p>
 

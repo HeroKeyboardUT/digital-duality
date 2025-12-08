@@ -9,7 +9,9 @@ import {
   AboutSection, 
   ProjectsSection, 
   BlogSection, 
-  ContactSection 
+  ContactSection,
+  AILabSection,
+  APIPlaygroundSection
 } from '@/components/sections';
 
 const Index = () => {
@@ -25,6 +27,8 @@ const Index = () => {
           <HeroSection />
           <AboutSection />
           <ProjectsSection />
+          <AILabSection />
+          <APIPlaygroundSection />
           <BlogSection />
           <ContactSection />
         </main>
