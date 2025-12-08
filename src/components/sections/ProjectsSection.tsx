@@ -92,6 +92,8 @@ const projects: Project[] = [
   },
 ];
 
+const projectIds = ['tsp-solver', 'quiz-app', 'cutting-stock', 'internship-crawler', 'cinema-management', 'chat-app', 'emotion-detection'];
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { theme, language } = useTheme();
 
@@ -109,24 +111,26 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           PRJ-{String(index + 1).padStart(3, '0')}
         </div>
         {project.featured && (
-          <span className={`text-[9px] ${theme === 'dark' ? 'text-accent' : 'text-foreground'}`}>
+          <span className={`text-[10px] ${theme === 'dark' ? 'text-accent' : 'text-foreground'}`}>
             [FEATURED]
           </span>
         )}
       </div>
 
       {/* Title */}
-      <h3 className={`font-sans font-bold text-lg mb-1 ${theme === 'dark' ? 'text-flicker' : ''}`}>
-        {t(language, project.title, project.titleVn)}
+      <h3 className={`font-sans font-bold text-xl mb-1 ${theme === 'dark' ? 'text-flicker' : ''}`}>
+        <a href={`/project/${projectIds[index]}`} className="hover:underline">
+          {t(language, project.title, project.titleVn)}
+        </a>
       </h3>
       
       {/* Topic */}
-      <div className={`text-[10px] mb-3 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`}>
+      <div className={`text-sm mb-3 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`}>
         {t(language, project.topic, project.topicVn)}
       </div>
 
       {/* Description */}
-      <p className="text-[11px] leading-relaxed mb-4 flex-1">
+      <p className="text-base leading-relaxed mb-4 flex-1">
         {t(language, project.description, project.descriptionVn)}
       </p>
 
