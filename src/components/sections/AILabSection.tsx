@@ -188,12 +188,12 @@ export function AILabSection() {
         </motion.div>
 
         {/* AI Lab Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Snake AI */}
+        <div className="flex justify-center">
+          {/* Snake AI - Centered */}
           <motion.div
-            className="grid-cell"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="grid-cell max-w-md w-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-2 mb-4">
@@ -208,68 +208,8 @@ export function AILabSection() {
             </p>
             <SnakeAI />
           </motion.div>
-
-          {/* Neural Network Visualization */}
-          <motion.div
-            className="grid-cell"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Zap className={`${theme === 'dark' ? 'text-accent' : 'text-primary'}`} />
-              <h3 className="text-xl font-bold">Neural Network Activity</h3>
-            </div>
-            <p className="text-sm mb-4 text-muted-foreground">
-              {t(language,
-                'Real-time visualization of neural network activations processing input data.',
-                'Trực quan hóa thời gian thực các kích hoạt mạng neuron xử lý dữ liệu đầu vào.'
-              )}
-            </p>
-            <NeuralNetworkViz />
-          </motion.div>
         </div>
       </div>
     </section>
-  );
-}
-
-function NeuralNetworkViz() {
-  const [activations, setActivations] = useState<number[][]>([
-    [0.5, 0.3, 0.8, 0.2],
-    [0.6, 0.9, 0.4],
-    [0.7, 0.3],
-  ]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActivations(prev => prev.map(layer => 
-        layer.map(() => Math.random())
-      ));
-    }, 200);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="flex items-center justify-center gap-8 py-8">
-      {activations.map((layer, layerIdx) => (
-        <div key={layerIdx} className="flex flex-col gap-3">
-          {layer.map((activation, nodeIdx) => (
-            <motion.div
-              key={nodeIdx}
-              className="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center"
-              style={{
-                backgroundColor: `hsl(180, 100%, ${activation * 50}%)`,
-                boxShadow: activation > 0.7 ? `0 0 ${activation * 20}px hsl(180, 100%, 50%)` : 'none',
-              }}
-              animate={{ scale: [1, 1 + activation * 0.2, 1] }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-[8px] font-mono">{activation.toFixed(1)}</span>
-            </motion.div>
-          ))}
-        </div>
-      ))}
-    </div>
   );
 }
