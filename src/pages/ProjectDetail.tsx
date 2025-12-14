@@ -329,6 +329,70 @@ Hệ thống AI phát hiện cảm xúc con người từ biểu cảm khuôn m�
     },
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop',
   },
+  {
+    id: 'rl-playground',
+    title: 'RL Grid World Playground',
+    titleVn: 'Sân Chơi RL Grid World',
+    topic: 'Reinforcement Learning, Q-Learning, SARSA, Interactive Demo',
+    topicVn: 'Học Tăng Cường, Q-Learning, SARSA, Demo Tương Tác',
+    description: 'Interactive reinforcement learning playground with multiple algorithms and visualizations.',
+    descriptionVn: 'Sân chơi học tăng cường tương tác với nhiều thuật toán và trực quan hóa.',
+    content: `
+## Overview
+
+An interactive reinforcement learning playground where you can experiment with different RL algorithms on a customizable grid world environment.
+
+## Algorithms Available
+
+- **Q-Learning**: Off-policy TD learning that learns optimal Q-values
+- **SARSA**: On-policy TD learning that learns from actual experience  
+- **Expected SARSA**: Uses expected value for lower variance
+- **Monte Carlo**: Learns from complete episodes
+
+## Features
+
+- **Interactive Grid**: Click to add goals (💎), traps (☠️), walls (🧱)
+- **Real-time Learning**: Watch the agent learn in real-time
+- **Q-Table Visualization**: See Q-values for each state-action pair
+- **Policy Display**: Visualize the learned policy with arrows
+- **Learning Curves**: Track reward progress over episodes
+- **Adjustable Parameters**: Learning rate, discount factor, epsilon, etc.
+
+## How It Works
+
+The agent starts at position (0,0) and tries to reach the goal while avoiding traps. It learns through trial and error, updating its Q-table based on received rewards.
+    `,
+    contentVn: `
+## Tổng Quan
+
+Sân chơi học tăng cường tương tác nơi bạn có thể thí nghiệm với các thuật toán RL khác nhau trên môi trường grid world có thể tùy chỉnh.
+
+## Các Thuật Toán
+
+- **Q-Learning**: Học TD ngoài chính sách, học giá trị Q tối ưu
+- **SARSA**: Học TD trong chính sách, học từ trải nghiệm thực tế
+- **Expected SARSA**: Sử dụng giá trị kỳ vọng để giảm phương sai
+- **Monte Carlo**: Học từ các episode hoàn chỉnh
+
+## Tính Năng
+
+- **Grid Tương Tác**: Click để thêm mục tiêu (💎), bẫy (☠️), tường (🧱)
+- **Học Thời Gian Thực**: Xem agent học trong thời gian thực
+- **Trực Quan Q-Table**: Xem giá trị Q cho mỗi cặp trạng thái-hành động
+- **Hiển Thị Chính Sách**: Trực quan hóa chính sách đã học bằng mũi tên
+- **Đường Cong Học**: Theo dõi tiến trình phần thưởng qua các episode
+- **Tham Số Điều Chỉnh**: Learning rate, discount factor, epsilon, v.v.
+
+## Cách Hoạt Động
+
+Agent bắt đầu tại vị trí (0,0) và cố gắng đến mục tiêu trong khi tránh bẫy. Nó học qua thử và sai, cập nhật Q-table dựa trên phần thưởng nhận được.
+    `,
+    tech: ['React', 'TypeScript', 'Reinforcement Learning', 'Recharts'],
+    date: '2024-12',
+    links: { live: '/rl-playground' },
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop',
+    isInteractive: true,
+  },
 ];
 
 function ProjectDetailContent() {

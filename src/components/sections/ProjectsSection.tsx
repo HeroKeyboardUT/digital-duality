@@ -90,9 +90,20 @@ const projects: Project[] = [
       pdf: './image/Emotional_detection.pdf'
     },
   },
+  {
+    title: 'RL Grid World Playground',
+    titleVn: 'Sân Chơi RL Grid World',
+    topic: 'Reinforcement Learning, Q-Learning, SARSA, Interactive Demo',
+    topicVn: 'Học Tăng Cường, Q-Learning, SARSA, Demo Tương Tác',
+    description: 'Interactive RL playground with multiple algorithms (Q-Learning, SARSA, Expected SARSA, Monte Carlo), customizable environment, and real-time visualizations.',
+    descriptionVn: 'Sân chơi RL tương tác với nhiều thuật toán, môi trường tùy chỉnh, và trực quan hóa thời gian thực.',
+    tech: ['React', 'TypeScript', 'Reinforcement Learning'],
+    featured: true,
+    links: { live: '/rl-playground' },
+  },
 ];
 
-const projectIds = ['tsp-solver', 'quiz-app', 'cutting-stock', 'internship-crawler', 'cinema-management', 'chat-app', 'emotion-detection'];
+const projectIds = ['tsp-solver', 'quiz-app', 'cutting-stock', 'internship-crawler', 'cinema-management', 'chat-app', 'emotion-detection', 'rl-playground'];
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { theme, language } = useTheme();
