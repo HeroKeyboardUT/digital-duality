@@ -16,18 +16,18 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/digital-duality">
         <Routes>
-          <Route path="/digital-duality/" element={<Index />} />
+          <Route path="/" element={<Index />} />
           <Route
-            path="/digital-duality/project/rl-playground"
+            path="/project/rl-playground"
             element={<RLPlayground />}
           />
           <Route
-            path="/digital-duality/project/:id"
+            path="/project/:id"
             element={<ProjectDetail />}
           />
-          <Route path="/digital-duality/blog/:id" element={<BlogDetail />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
