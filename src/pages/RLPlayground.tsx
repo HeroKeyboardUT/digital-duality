@@ -1445,6 +1445,8 @@ function RLPlaygroundContent() {
 export default function RLPlayground() {
   return (
     <ThemeProvider>
+      <GlitchTransition />
+      <CRTOverlay />
       <RLPlaygroundContent />
     </ThemeProvider>
   );
