@@ -60,8 +60,17 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+
 ## How can I deploy this project?
 
+### Serving static files (PDF, images, etc.)
+To make files like Emotional_detection.pdf accessible after deployment, place them in the `public/` folder. After deploying to GitHub Pages, you can access the PDF at:
+
+```
+https://<your-github-username>.github.io/digital-duality/Emotional_detection.pdf
+```
+
+### Deploy with Lovable
 Simply open [Lovable](https://lovable.dev/projects/73af7bda-868e-466c-9db7-29ad457b8b6a) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
