@@ -105,7 +105,7 @@ const projects: Project[] = [
     featured: true,
     links: {
       github: "https://github.com/TechWizGroup/Emotion_detection/tree/Hieu",
-      pdf: "/digital-duality/Emotional_detection.pdf",
+      pdf: "https://herokeyboardut.github.io/CSPortfolio/image/Emotional_detection.pdf",
     },
   },
   {
