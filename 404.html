@@ -10,8 +10,6 @@
       name="keywords"
       content="full-stack developer, system architect, React, TypeScript, distributed systems"
     />
-    <link rel="canonical" href="https://dao.arch" />
-
     <meta property="og:title" content="HeroKeyboardUT" />
     <meta
       property="og:description"
@@ -38,5 +36,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Redirect all 404s to index.html for SPA routing
+      if (
+        location.pathname !== "/digital-duality/" &&
+        !location.pathname.endsWith("index.html")
+      ) {
+        location.replace(
+          "/digital-duality/" +
+            "#" +
+            location.pathname.replace("/digital-duality", "") +
+            location.search +
+            location.hash
+        );
+      }
+    </script>
   </body>
 </html>
