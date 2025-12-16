@@ -20,7 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route
-            path="/project/rl-playground"
+            path="/rl-playground"
             element={<RLPlayground />}
           />
           <Route

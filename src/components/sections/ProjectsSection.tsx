@@ -119,7 +119,7 @@ const projects: Project[] = [
       "Sân chơi RL tương tác với nhiều thuật toán, môi trường tùy chỉnh, và trực quan hóa thời gian thực.",
     tech: ["React", "TypeScript", "Reinforcement Learning"],
     featured: true,
-    links: { live: "/digital-duality/project/rl-playground" },
+    links: { live: "/digital-duality/rl-playground" },
   },
 ];
 
