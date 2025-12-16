@@ -20,14 +20,14 @@ const App = () => (
         <Routes>
           <Route path="/digital-duality/" element={<Index />} />
           <Route
+            path="/digital-duality/project/rl-playground"
+            element={<RLPlayground />}
+          />
+          <Route
             path="/digital-duality/project/:id"
             element={<ProjectDetail />}
           />
           <Route path="/digital-duality/blog/:id" element={<BlogDetail />} />
-          <Route
-            path="/digital-duality/project/rl-playground"
-            element={<RLPlayground />}
-          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
