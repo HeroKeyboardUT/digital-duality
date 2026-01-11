@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useTheme, t } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { Menu, X, Terminal, Cpu } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { href: "/", label: "CV", labelVn: "CV" },
-  { href: "/projects", label: "Projects", labelVn: "Dự Án" },
-  { href: "/blog", label: "Blog", labelVn: "Blog" },
+  { href: "#about", label: "About", labelVn: "Giới Thiệu" },
+  { href: "#projects", label: "Projects", labelVn: "Dự Án" },
+  { href: "#blog", label: "Blog", labelVn: "Blog" },
+  { href: "#contact", label: "Contact", labelVn: "Liên Hệ" },
 ];
 
 export function Header() {
@@ -56,14 +56,15 @@ export function Header() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <Link
+              <motion.a
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 className={`text-xs font-bold uppercase tracking-wider transition-colors relative group ${
                   theme === "dark"
                     ? "hover:text-accent"
                     : "hover:text-muted-foreground"
                 }`}
+                whileHover={{ y: -2 }}
               >
                 {t(language, link.label, link.labelVn)}
                 <span
@@ -71,7 +72,7 @@ export function Header() {
                     theme === "dark" ? "bg-accent" : "bg-foreground"
                   }`}
                 />
-              </Link>
+              </motion.a>
             ))}
           </nav>
 
@@ -147,9 +148,9 @@ export function Header() {
             exit={{ opacity: 0, height: 0 }}
           >
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-bold uppercase border-b border-foreground/20 transition-colors ${
                   theme === "dark"
@@ -158,7 +159,7 @@ export function Header() {
                 }`}
               >
                 {t(language, link.label, link.labelVn)}
-              </Link>
+              </a>
             ))}
           </motion.nav>
         )}
