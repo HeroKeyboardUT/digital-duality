@@ -2,18 +2,19 @@ import { useState, useEffect } from 'react';
 import { useTheme, t } from '@/context/ThemeContext';
 import { motion } from 'framer-motion';
 import { Menu, X, Terminal, Cpu } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { href: '#about', label: 'About', labelVn: 'Giới Thiệu' },
-  { href: '#projects', label: 'Projects', labelVn: 'Dự Án' },
-  { href: '#blog', label: 'Blog', labelVn: 'Blog' },
-  { href: '#contact', label: 'Contact', labelVn: 'Liên Hệ' },
+  { href: '/', label: 'CV', labelVn: 'CV' },
+  { href: '/projects', label: 'Projects', labelVn: 'Dự Án' },
+  { href: '/blog', label: 'Blog', labelVn: 'Blog' },
 ];
 
 export function Header() {
   const { theme, language, toggleTheme, toggleLanguage } = useTheme();
   const [time, setTime] = useState(new Date());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -24,41 +25,49 @@ export function Header() {
     return date.toISOString().slice(11, 19);
   };
 
+  const isActive = (href: string) => {
+    if (href === '/') return location.pathname === '/';
+    return location.pathname.startsWith(href);
+  };
+
   return (
     <header className={`border-b-[2px] border-foreground bg-background sticky top-0 z-50 ${theme === 'dark' ? 'glow-border' : ''}`}>
       <div className="container mx-auto max-w-6xl">
         <div className="flex items-center justify-between h-14 px-4">
           {/* Logo - Text Only */}
-          <motion.a 
-            href="#"
-            className="flex items-center gap-2 font-sans font-black text-lg tracking-tight"
-            whileHover={{ scale: 1.05 }}
-          >
-            {theme === 'dark' ? (
-              <Terminal size={20} className="text-accent" />
-            ) : (
-              <Cpu size={20} />
-            )}
-            <span className={theme === 'dark' ? 'neon-text' : ''}>HIEU</span>
-            <span className={theme === 'dark' ? 'text-accent' : 'text-muted-foreground'}>DZ</span>
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link 
+              to="/"
+              className="flex items-center gap-2 font-sans font-black text-lg tracking-tight"
+            >
+              {theme === 'dark' ? (
+                <Terminal size={20} className="text-accent" />
+              ) : (
+                <Cpu size={20} />
+              )}
+              <span className={theme === 'dark' ? 'neon-text' : ''}>HIEU</span>
+              <span className={theme === 'dark' ? 'text-accent' : 'text-muted-foreground'}>DZ</span>
+            </Link>
+          </motion.div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                className={`text-xs font-bold uppercase tracking-wider transition-colors relative group ${
-                  theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
-                }`}
-                whileHover={{ y: -2 }}
-              >
-                {t(language, link.label, link.labelVn)}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                  theme === 'dark' ? 'bg-accent' : 'bg-foreground'
-                }`} />
-              </motion.a>
+              <motion.div key={link.href} whileHover={{ y: -2 }}>
+                <Link
+                  to={link.href}
+                  className={`text-xs font-bold uppercase tracking-wider transition-colors relative group ${
+                    isActive(link.href)
+                      ? theme === 'dark' ? 'text-accent' : 'text-foreground'
+                      : theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
+                  }`}
+                >
+                  {t(language, link.label, link.labelVn)}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
+                    isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                  } ${theme === 'dark' ? 'bg-accent' : 'bg-foreground'}`} />
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
@@ -124,18 +133,20 @@ export function Header() {
             exit={{ opacity: 0, height: 0 }}
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-bold uppercase border-b border-foreground/20 transition-colors ${
-                  theme === 'dark' 
-                    ? 'hover:bg-primary/10 hover:text-accent' 
-                    : 'hover:bg-foreground hover:text-background'
+                  isActive(link.href)
+                    ? theme === 'dark' ? 'text-accent bg-primary/10' : 'bg-muted'
+                    : theme === 'dark' 
+                      ? 'hover:bg-primary/10 hover:text-accent' 
+                      : 'hover:bg-foreground hover:text-background'
                 }`}
               >
                 {t(language, link.label, link.labelVn)}
-              </a>
+              </Link>
             ))}
           </motion.nav>
         )}
