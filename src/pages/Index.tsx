@@ -3,7 +3,10 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { GlitchTransition } from '@/components/GlitchTransition';
 import { CRTOverlay } from '@/components/CRTOverlay';
-import { CVPage } from '@/components/CVPage';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { ProjectsSection } from '@/components/sections/ProjectsSection';
+import { ContactSection } from '@/components/sections/ContactSection';
 
 const Index = () => {
   return (
@@ -14,7 +17,10 @@ const Index = () => {
         <Header />
         
         <main className="flex-1">
-          <CVPage />
+          <HeroSection />
+          <AboutSection />
+          <ProjectsSection />
+          <ContactSection />
         </main>
         
         <Footer />

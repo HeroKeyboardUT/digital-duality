@@ -5,7 +5,8 @@ import { Menu, X, Terminal, Cpu } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { href: '/', label: 'CV', labelVn: 'CV' },
+  { href: '/', label: 'Home', labelVn: 'Trang Chủ' },
+  { href: '/cv', label: 'CV', labelVn: 'CV' },
   { href: '/projects', label: 'Projects', labelVn: 'Dự Án' },
   { href: '/blog', label: 'Blog', labelVn: 'Blog' },
 ];
