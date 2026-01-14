@@ -15,10 +15,10 @@ const skills = {
 };
 
 const featuredProjects = [
-  { id: 'cinema-management', name: 'Cinema Management System', nameVn: 'Hệ Thống Quản Lý Rạp Phim', tech: 'React, Node.js, Express', icon: '🎬' },
-  { id: 'chat-app', name: 'Real-time Chat App', nameVn: 'Ứng Dụng Chat Thời Gian Thực', tech: 'React, MongoDB, WebSocket', icon: '💬' },
-  { id: 'emotion-detection', name: 'Emotion Detection AI', nameVn: 'AI Nhận Diện Cảm Xúc', tech: 'Python, TensorFlow, CNN', icon: '🤖' },
-  { id: 'rl-playground', name: 'RL Grid World', nameVn: 'Sân Chơi RL Grid World', tech: 'React, TypeScript', link: '/rl-playground', icon: '🎮' },
+  { id: 'cinema-management', name: 'Cinema Management System', nameVn: 'Hệ Thống Quản Lý Rạp Phim', tech: 'React, Node.js, Express', icon: 'CM' },
+  { id: 'chat-app', name: 'Real-time Chat App', nameVn: 'Ứng Dụng Chat Thời Gian Thực', tech: 'React, MongoDB, WebSocket', icon: 'CH' },
+  { id: 'emotion-detection', name: 'Emotion Detection AI', nameVn: 'AI Nhận Diện Cảm Xúc', tech: 'Python, TensorFlow, CNN', icon: 'AI' },
+  { id: 'rl-playground', name: 'RL Grid World', nameVn: 'Sân Chơi RL Grid World', tech: 'React, TypeScript', link: '/rl-playground', icon: 'RL' },
 ];
 
 const experiences = [
@@ -319,19 +319,19 @@ export function CVPage() {
               </div>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { name: 'Team Collaboration', nameVn: 'Làm Việc Nhóm', icon: '🤝' },
-                  { name: 'Time Management', nameVn: 'Quản Lý Thời Gian', icon: '⏰' },
-                  { name: 'Self-Learning', nameVn: 'Tự Học', icon: '📚' },
-                  { name: 'Critical Thinking', nameVn: 'Tư Duy Phản Biện', icon: '🧠' },
-                  { name: 'Problem Solving', nameVn: 'Giải Quyết Vấn Đề', icon: '💡' },
-                  { name: 'Communication', nameVn: 'Giao Tiếp', icon: '💬' },
+                  { name: 'Team Collaboration', nameVn: 'Làm Việc Nhóm', icon: 'TC' },
+                  { name: 'Time Management', nameVn: 'Quản Lý Thời Gian', icon: 'TM' },
+                  { name: 'Self-Learning', nameVn: 'Tự Học', icon: 'SL' },
+                  { name: 'Critical Thinking', nameVn: 'Tư Duy Phản Biện', icon: 'CT' },
+                  { name: 'Problem Solving', nameVn: 'Giải Quyết Vấn Đề', icon: 'PS' },
+                  { name: 'Communication', nameVn: 'Giao Tiếp', icon: 'CO' },
                 ].map((skill, i) => (
                   <motion.div
                     key={skill.name}
                     className={`p-2 text-center border border-foreground/20 ${theme === 'dark' ? 'hover:border-accent' : 'hover:bg-muted'} transition-all`}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="text-lg mb-1">{skill.icon}</div>
+                    <div className={`text-xs font-bold mb-1 ${theme === 'dark' ? 'text-accent' : ''}`}>{skill.icon}</div>
                     <div className="text-[9px]">{t(language, skill.name, skill.nameVn)}</div>
                   </motion.div>
                 ))}

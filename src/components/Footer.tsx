@@ -65,10 +65,10 @@ export function Footer() {
           <div>
             <div className="label-text mb-4">{t(language, 'CONTACT', 'LIÊN LẠC')}</div>
             <div className="space-y-2 text-sm">
-              <p>📧 phamquanghieulop95@gmail.com</p>
-              <p>📱 0397961039</p>
-              <p>📍 Bien Hoa City, Vietnam</p>
-              <p>🎓 HCMUT - Bach Khoa</p>
+              <p className="flex items-center gap-2"><Mail size={12} /> phamquanghieulop95@gmail.com</p>
+              <p className="flex items-center gap-2"><Phone size={12} /> 0397961039</p>
+              <p className="flex items-center gap-2"><span className="w-3 h-3 border border-current rounded-full flex items-center justify-center text-[8px]">V</span> Bien Hoa City, Vietnam</p>
+              <p className="flex items-center gap-2"><span className="w-3 h-3 border border-current flex items-center justify-center text-[8px]">H</span> HCMUT - Bach Khoa</p>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CRTOverlay } from '@/components/CRTOverlay';
+import { GlitchTransition } from '@/components/GlitchTransition';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
 import { Link } from 'react-router-dom';
@@ -37,7 +38,7 @@ const blogPosts: BlogPost[] = [
     tags: ['DSA', 'Fundamentals', 'Interview Prep'],
     featured: true,
     views: 1234,
-    icon: '📊',
+    icon: 'DS',
   },
   {
     id: 'sorting-algorithms',
@@ -50,7 +51,7 @@ const blogPosts: BlogPost[] = [
     category: 'Algorithms',
     tags: ['Sorting', 'Time Complexity', 'Interview Prep'],
     views: 892,
-    icon: '🔄',
+    icon: 'AL',
   },
   {
     id: 'react-best-practices',
@@ -64,7 +65,7 @@ const blogPosts: BlogPost[] = [
     tags: ['React', 'Frontend', 'JavaScript'],
     featured: true,
     views: 2156,
-    icon: '⚛️',
+    icon: 'RC',
   },
   {
     id: 'sql-optimization',
@@ -77,7 +78,7 @@ const blogPosts: BlogPost[] = [
     category: 'Database',
     tags: ['SQL', 'Performance', 'Database'],
     views: 567,
-    icon: '🗄️',
+    icon: 'DB',
   },
   {
     id: 'cnn-introduction',
@@ -91,7 +92,7 @@ const blogPosts: BlogPost[] = [
     tags: ['CNN', 'Deep Learning', 'AI'],
     featured: true,
     views: 1890,
-    icon: '🧠',
+    icon: 'ML',
   },
   {
     id: 'rest-api-design',
@@ -104,7 +105,7 @@ const blogPosts: BlogPost[] = [
     category: 'Web Development',
     tags: ['API', 'Backend', 'REST'],
     views: 743,
-    icon: '🔌',
+    icon: 'AP',
   },
   {
     id: 'git-workflow',
@@ -117,7 +118,7 @@ const blogPosts: BlogPost[] = [
     category: 'Tools',
     tags: ['Git', 'Collaboration', 'DevOps'],
     views: 456,
-    icon: '🌿',
+    icon: 'GT',
   },
   {
     id: 'oop-principles',
@@ -130,7 +131,7 @@ const blogPosts: BlogPost[] = [
     category: 'Programming',
     tags: ['OOP', 'SOLID', 'Design Patterns'],
     views: 678,
-    icon: '🏗️',
+    icon: 'OO',
   },
 ];
 
@@ -326,7 +327,7 @@ function BlogContent() {
                   transition={{ delay: 0.5 + i * 0.1 }}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <span className="absolute top-3 right-3 text-3xl opacity-20">{post.icon}</span>
+                  <span className={`absolute top-3 right-3 text-2xl font-black opacity-20 ${theme === 'dark' ? 'text-accent' : ''}`}>{post.icon}</span>
                   <div className={`text-[10px] px-2 py-0.5 inline-block border mb-2 ${theme === 'dark' ? 'border-accent text-accent' : 'border-foreground'}`}>
                     {post.category}
                   </div>
@@ -371,9 +372,9 @@ function BlogContent() {
               >
                 {/* Background icon */}
                 <motion.span 
-                  className={`absolute -right-4 -top-4 text-6xl opacity-10 transition-all duration-300 ${
+                  className={`absolute -right-2 -top-2 text-4xl font-black opacity-10 transition-all duration-300 ${
                     hoveredPost === post.id ? 'opacity-20 scale-110' : ''
-                  }`}
+                  } ${theme === 'dark' ? 'text-accent' : ''}`}
                 >
                   {post.icon}
                 </motion.span>
@@ -492,6 +493,7 @@ export default function Blog() {
   return (
     <ThemeProvider>
       <div className="min-h-screen flex flex-col bg-background">
+        <GlitchTransition />
         <CRTOverlay />
         <Header />
         <main className="flex-1">
