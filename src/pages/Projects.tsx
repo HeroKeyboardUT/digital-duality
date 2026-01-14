@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CRTOverlay } from '@/components/CRTOverlay';
+import { GlitchTransition } from '@/components/GlitchTransition';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
 import { Link } from 'react-router-dom';
@@ -37,7 +38,7 @@ const projects: Project[] = [
     category: 'AI/ML',
     featured: true,
     hasDemo: true,
-    icon: '🎮',
+    icon: 'RL',
     links: { live: '/rl-playground' },
   },
   {
@@ -51,7 +52,7 @@ const projects: Project[] = [
     tech: ['Python', 'TensorFlow', 'CNN', 'OpenCV'],
     category: 'AI/ML',
     featured: true,
-    icon: '🤖',
+    icon: 'AI',
     links: { 
       github: 'https://github.com/TechWizGroup/Emotion_detection/tree/Hieu',
       pdf: './image/Emotional_detection.pdf'
@@ -68,7 +69,7 @@ const projects: Project[] = [
     tech: ['ReactJS', 'NodeJS', 'ExpressJS', 'TailwindCSS', 'MySQL'],
     category: 'Fullstack',
     featured: true,
-    icon: '🎬',
+    icon: 'CM',
     links: { github: 'https://github.com/HeroKeyboardUT/cine-verse-ticket-hub' },
   },
   {
@@ -82,7 +83,7 @@ const projects: Project[] = [
     tech: ['ReactJS', 'ExpressJS', 'MongoDB', 'Socket.io', 'WebRTC'],
     category: 'Fullstack',
     featured: true,
-    icon: '💬',
+    icon: 'CH',
     links: { github: 'https://github.com/HeroKeyboardUT/chatapp' },
   },
   {
@@ -96,7 +97,7 @@ const projects: Project[] = [
     tech: ['ReactJS', 'NodeJS', 'TailwindCSS', 'Cheerio'],
     category: 'Tools',
     featured: true,
-    icon: '🕷️',
+    icon: 'CR',
     links: { github: 'https://github.com/HeroKeyboardUT/HCMUT-CSE-Internship-Crawler' },
   },
   {
@@ -110,7 +111,7 @@ const projects: Project[] = [
     tech: ['C++', 'JavaScript', 'HTML', 'CSS'],
     category: 'Algorithms',
     featured: true,
-    icon: '🗺️',
+    icon: 'TS',
   },
   {
     id: 'cutting-stock',
@@ -122,7 +123,7 @@ const projects: Project[] = [
     descriptionVn: 'Cắt vật liệu thành các mảnh để giảm thiểu lãng phí bằng thuật toán First Fit Decreasing.',
     tech: ['JavaScript', 'Python', 'HTML', 'CSS'],
     category: 'Algorithms',
-    icon: '✂️',
+    icon: 'CS',
   },
   {
     id: 'quiz-app',
@@ -134,7 +135,7 @@ const projects: Project[] = [
     descriptionVn: 'Ứng dụng quiz đơn giản để luyện tập và kiểm tra kiến thức với câu hỏi tùy chỉnh.',
     tech: ['JavaScript', 'HTML', 'CSS'],
     category: 'Tools',
-    icon: '❓',
+    icon: 'QA',
   },
 ];
 
@@ -316,9 +317,9 @@ function ProjectsContent() {
               >
                 {/* Background decoration */}
                 <motion.div 
-                  className={`absolute -right-10 -top-10 text-8xl opacity-10 pointer-events-none transition-all duration-500 ${
+                  className={`absolute -right-4 -top-4 text-6xl font-black opacity-10 pointer-events-none transition-all duration-500 ${
                     hoveredProject === project.id ? 'opacity-20 scale-110' : ''
-                  }`}
+                  } ${theme === 'dark' ? 'text-accent' : ''}`}
                 >
                   {project.icon}
                 </motion.div>
@@ -504,6 +505,7 @@ export default function Projects() {
   return (
     <ThemeProvider>
       <div className="min-h-screen flex flex-col bg-background">
+        <GlitchTransition />
         <CRTOverlay />
         <Header />
         <main className="flex-1">
