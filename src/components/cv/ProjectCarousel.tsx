@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink, Github, FileText } from 'lucide-react';
 import { useTheme, t } from '@/context/ThemeContext';
 import { Link } from 'react-router-dom';
+import { featuredProjects } from '@/data';
 import {
   Carousel,
   CarouselContent,
@@ -10,52 +11,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
-const featuredProjects = [
-  { 
-    id: 'cinema-management', 
-    name: 'Cinema Management System', 
-    nameVn: 'Hệ Thống Quản Lý Rạp Phim', 
-    tech: ['React', 'Node.js', 'Express', 'MySQL'],
-    description: 'Full-stack cinema booking and management system with real-time seat selection.',
-    descriptionVn: 'Hệ thống đặt vé và quản lý rạp phim full-stack với chọn ghế thời gian thực.',
-    icon: '🎬',
-    color: 'primary',
-    github: 'https://github.com/HeroKeyboardUT/cinema-management',
-  },
-  { 
-    id: 'chat-app', 
-    name: 'Real-time Chat App', 
-    nameVn: 'Ứng Dụng Chat Thời Gian Thực', 
-    tech: ['React', 'MongoDB', 'WebSocket', 'Node.js'],
-    description: 'Real-time messaging application with private/group chats and file sharing.',
-    descriptionVn: 'Ứng dụng nhắn tin thời gian thực với chat riêng/nhóm và chia sẻ file.',
-    icon: '💬',
-    color: 'accent',
-    github: 'https://github.com/HeroKeyboardUT/chat-app',
-  },
-  { 
-    id: 'emotion-detection', 
-    name: 'Emotion Detection AI', 
-    nameVn: 'AI Nhận Diện Cảm Xúc', 
-    tech: ['Python', 'TensorFlow', 'CNN', 'OpenCV'],
-    description: 'Deep learning model for real-time facial emotion detection and classification.',
-    descriptionVn: 'Mô hình deep learning nhận diện và phân loại cảm xúc khuôn mặt thời gian thực.',
-    icon: '🤖',
-    color: 'primary',
-  },
-  { 
-    id: 'rl-playground', 
-    name: 'RL Grid World', 
-    nameVn: 'Sân Chơi RL Grid World', 
-    tech: ['React', 'TypeScript', 'Framer Motion'],
-    description: 'Interactive reinforcement learning playground with Q-learning visualization.',
-    descriptionVn: 'Sân chơi RL tương tác với trực quan hóa thuật toán Q-learning.',
-    icon: '🎮',
-    color: 'accent',
-    link: '/rl-playground',
-  },
-];
 
 export function ProjectCarousel() {
   const { theme, language } = useTheme();

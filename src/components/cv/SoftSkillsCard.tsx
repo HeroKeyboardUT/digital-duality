@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
 import { Heart, Users, Clock, BookOpen, Lightbulb, Target, MessageCircle } from 'lucide-react';
-import { softSkills } from '@/data/skills';
+import { softSkills } from '@/data';
 
 const iconMap: Record<string, any> = {
-  TC: Users,
-  TM: Clock,
-  SL: BookOpen,
-  CT: Lightbulb,
-  PS: Target,
-  CO: MessageCircle,
+  '🤝': Users,
+  '⏰': Clock,
+  '📚': BookOpen,
+  '💡': Lightbulb,
+  '🧩': Target,
+  '💬': MessageCircle,
 };
 
 export function SoftSkillsCard() {

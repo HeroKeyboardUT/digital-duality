@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
 import { Code, Zap } from 'lucide-react';
-import { cvSkills, proficiencyLevels } from '@/data/skills';
+import { cvSkills, proficiencyLevels } from '@/data';
 
 export function TechSkillsCard() {
   const { theme, language } = useTheme();

@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Download, Mail, Share2, Printer, X } from 'lucide-react';
 import { useTheme, t } from '@/context/ThemeContext';
+import { floatingActions, contactInfo, profileInfo } from '@/data';
 
-const actions = [
-  { icon: Download, label: 'Download CV', labelVn: 'Tải CV', action: 'download' },
-  { icon: Mail, label: 'Contact', labelVn: 'Liên Hệ', action: 'contact' },
-  { icon: Share2, label: 'Share', labelVn: 'Chia Sẻ', action: 'share' },
-  { icon: Printer, label: 'Print', labelVn: 'In', action: 'print' },
-];
+const iconMap: Record<string, any> = { Download, Mail, Share2, Printer };
+
+const actions = floatingActions.map(action => ({
+  ...action,
+  IconComponent: iconMap[action.icon],
+}));
 
 export function FloatingActions() {
   const { theme, language } = useTheme();
@@ -17,16 +18,15 @@ export function FloatingActions() {
   const handleAction = (action: string) => {
     switch (action) {
       case 'download':
-        // Trigger CV download
         window.print();
         break;
       case 'contact':
-        window.location.href = 'mailto:phamquanghieulop95@gmail.com';
+        window.location.href = `mailto:${contactInfo.email}`;
         break;
       case 'share':
         if (navigator.share) {
           navigator.share({
-            title: 'Pham Quang Hieu - CV',
+            title: `${profileInfo.name} - CV`,
             url: window.location.href,
           });
         } else {
@@ -67,7 +67,7 @@ export function FloatingActions() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <action.icon size={16} />
+                <action.IconComponent size={16} />
                 <span className="text-xs font-bold uppercase">
                   {language === 'en' ? action.label : action.labelVn}
                 </span>
