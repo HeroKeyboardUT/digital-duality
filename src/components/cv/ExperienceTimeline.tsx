@@ -1,31 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
 import { Calendar, MapPin, Briefcase } from 'lucide-react';
-
-const experiences = [
-  {
-    title: 'Computer Science Student',
-    titleVn: 'Sinh Viên KHMT',
-    company: 'HCMUT - Bach Khoa',
-    period: '2023 - Present',
-    description: 'Studying Computer Science with focus on Software Engineering, AI/ML, and System Design.',
-    descriptionVn: 'Học Khoa học Máy tính với trọng tâm Kỹ thuật Phần mềm, AI/ML, và Thiết kế Hệ thống.',
-    type: 'education',
-    achievements: ['GPA: 3.5/4.0', 'Dean\'s List', 'Active in CS Club'],
-    achievementsVn: ['GPA: 3.5/4.0', 'Danh sách xuất sắc', 'Hoạt động CLB CNTT'],
-  },
-  {
-    title: 'Self-taught Developer',
-    titleVn: 'Tự Học Lập Trình',
-    company: 'Personal Projects',
-    period: '2022 - Present',
-    description: 'Building full-stack web applications, learning AI/ML, and contributing to open source.',
-    descriptionVn: 'Xây dựng ứng dụng web full-stack, học AI/ML, và đóng góp mã nguồn mở.',
-    type: 'experience',
-    achievements: ['5+ Projects', '100+ Commits', 'React & Node.js'],
-    achievementsVn: ['5+ Dự án', '100+ Commits', 'React & Node.js'],
-  },
-];
+import { experiences } from '@/data';
 
 export function ExperienceTimeline() {
   const { theme, language } = useTheme();

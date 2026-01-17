@@ -3,10 +3,7 @@ import { motion } from 'framer-motion';
 import { useTheme, t } from '@/context/ThemeContext';
 import { User, Terminal } from 'lucide-react';
 import { TypingEffect } from './TypingEffect';
-
-const summaryEn = "Passionate Computer Science student at HCMUT with strong foundation in software development, AI/ML, and problem-solving. Experienced in building full-stack web applications using React, Node.js, and modern technologies. Eager to apply academic knowledge in real-world projects and contribute to innovative teams.";
-
-const summaryVn = "Sinh viên Khoa học Máy tính đam mê tại HCMUT với nền tảng vững chắc về phát triển phần mềm, AI/ML, và giải quyết vấn đề. Có kinh nghiệm xây dựng ứng dụng web full-stack sử dụng React, Node.js, và các công nghệ hiện đại. Mong muốn áp dụng kiến thức học thuật vào dự án thực tế và đóng góp cho các team sáng tạo.";
+import { profileInfo } from '@/data';
 
 export function SummaryCard() {
   const { theme, language } = useTheme();
@@ -46,7 +43,7 @@ export function SummaryCard() {
         )}
         {showTyping ? (
           <TypingEffect
-            text={language === 'en' ? summaryEn : summaryVn}
+            text={language === 'en' ? profileInfo.summaryEn : profileInfo.summaryVn}
             speed={15}
             delay={500}
             className={theme === 'dark' ? 'text-primary/90' : 'text-muted-foreground'}
@@ -54,7 +51,7 @@ export function SummaryCard() {
           />
         ) : (
           <span className={theme === 'dark' ? 'text-primary/90' : 'text-muted-foreground'}>
-            {language === 'en' ? summaryEn : summaryVn}
+            {language === 'en' ? profileInfo.summaryEn : profileInfo.summaryVn}
           </span>
         )}
       </div>

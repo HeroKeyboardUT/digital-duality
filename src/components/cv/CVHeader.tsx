@@ -1,21 +1,23 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Download, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 import { useTheme, t } from '@/context/ThemeContext';
+import { profileInfo, contactInfo, socialLinks } from '@/data';
 import hcmutLogo from '@/assets/hcmut-logo.png';
+
+const iconMap: Record<string, any> = { Mail, Phone, MapPin, Github, Linkedin };
 
 export function CVHeader() {
   const { theme, language } = useTheme();
 
   const contactBadges = [
-    { icon: Mail, text: 'phamquanghieulop95@gmail.com', href: 'mailto:phamquanghieulop95@gmail.com' },
-    { icon: Phone, text: '0397961039', href: 'tel:0397961039' },
-    { icon: MapPin, text: 'Bien Hoa, Vietnam', href: '#' },
+    { icon: Mail, text: contactInfo.email, href: `mailto:${contactInfo.email}` },
+    { icon: Phone, text: contactInfo.phone, href: `tel:${contactInfo.phone}` },
+    { icon: MapPin, text: language === 'en' ? contactInfo.location : contactInfo.locationVn, href: '#' },
   ];
 
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/HeroKeyboardUT', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/phamquanghieuutcs/', label: 'LinkedIn' },
-  ];
+  const cvSocialLinks = socialLinks
+    .filter(link => link.icon === 'Github' || link.icon === 'Linkedin')
+    .map(link => ({ ...link, IconComponent: iconMap[link.icon] }));
 
   return (
     <motion.header
@@ -95,12 +97,12 @@ export function CVHeader() {
               <h1 className={`text-4xl md:text-6xl font-black uppercase tracking-tight mb-2
                 ${theme === 'dark' ? 'text-gradient' : 'text-gradient-light'}`}
               >
-                PHAM QUANG HIEU
+                {profileInfo.name.toUpperCase()}
               </h1>
               <div className={`text-lg md:text-xl uppercase tracking-[0.3em] mb-4
                 ${theme === 'dark' ? 'text-accent' : 'text-muted-foreground'}`}
               >
-                {t(language, 'Computer Science Student', 'Sinh Viên Khoa Học Máy Tính')}
+                {language === 'en' ? profileInfo.title : profileInfo.titleVn}
               </div>
             </motion.div>
 
@@ -136,7 +138,7 @@ export function CVHeader() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              {socialLinks.map((link, idx) => (
+              {cvSocialLinks.map((link, idx) => (
                 <motion.a
                   key={idx}
                   href={link.href}
@@ -150,7 +152,7 @@ export function CVHeader() {
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <link.icon size={18} />
+                  <link.IconComponent size={18} />
                 </motion.a>
               ))}
             </motion.div>
@@ -172,13 +174,13 @@ export function CVHeader() {
                 <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-accent animate-pulse' : 'bg-foreground'}`} />
                 <span className="text-sm">{t(language, 'Available for Internship', 'Sẵn sàng thực tập')}</span>
               </div>
-              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-primary' : 'bg-muted-foreground'}`} />
                 <span className="text-sm">{t(language, 'Year 2 Student', 'Sinh viên năm 2')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${theme === 'dark' ? 'bg-primary' : 'bg-muted-foreground'}`} />
-                <span className="text-sm">GPA: 3.5/4.0</span>
+                <span className="text-sm">GPA: {profileInfo.gpa}</span>
               </div>
             </div>
           </motion.div>
