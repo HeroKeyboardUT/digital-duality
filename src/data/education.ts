@@ -1,4 +1,4 @@
-import type { Education, Coursework, Experience } from '@/types';
+import type { Education, Coursework, Experience } from "@/types";
 
 // ============================================
 // Education & Academic Information
@@ -6,55 +6,119 @@ import type { Education, Coursework, Experience } from '@/types';
 
 export const education: Education[] = [
   {
-    degree: 'Bachelor of Computer Science',
-    degreeVn: 'Cử Nhân Khoa Học Máy Tính',
-    school: 'HCMUT - Bach Khoa',
-    schoolVn: 'ĐH Bách Khoa TP.HCM',
-    period: '2023 - 2027',
-    gpa: '3.5/4.0',
+    degree: "Bachelor of Computer Science",
+    degreeVn: "Cử Nhân Khoa Học Máy Tính",
+    school: "HCMUT - Bach Khoa",
+    schoolVn: "ĐH Bách Khoa TP.HCM",
+    period: "2023 - 2027",
+    gpa: "3.5/4.0",
     highlights: [
-      'Focus on Software Engineering, AI/ML, and System Design',
+      "Focus on Software Engineering, AI/ML, and System Design",
       "Dean's List",
-      'Active in CS Club',
+      "Active in CS Club",
     ],
     highlightsVn: [
-      'Chuyên sâu Kỹ thuật Phần mềm, AI/ML, và Thiết kế Hệ thống',
-      'Danh sách xuất sắc',
-      'Hoạt động CLB CNTT',
+      "Chuyên sâu Kỹ thuật Phần mềm, AI/ML, và Thiết kế Hệ thống",
+      "Danh sách xuất sắc",
+      "Hoạt động CLB CNTT",
     ],
   },
 ];
 
 export const coursework: Coursework[] = [
-  { name: 'Data Structures & Algorithms', nameVn: 'CTDL & Thuật Toán', grade: 'A', highlight: true },
-  { name: 'Object-Oriented Programming', nameVn: 'Lập Trình Hướng Đối Tượng', grade: 'A', highlight: true },
-  { name: 'Database Systems', nameVn: 'Hệ Cơ Sở Dữ Liệu', grade: 'A-', highlight: false },
-  { name: 'Operating Systems', nameVn: 'Hệ Điều Hành', grade: 'B+', highlight: false },
-  { name: 'Computer Networks', nameVn: 'Mạng Máy Tính', grade: 'A-', highlight: false },
-  { name: 'Artificial Intelligence', nameVn: 'Trí Tuệ Nhân Tạo', grade: 'A', highlight: true },
+  { name: "Học máy", nameVn: "Học máy", grade: "A+ (9.6)", highlight: true },
+  {
+    name: "Mạng máy tính",
+    nameVn: "Mạng máy tính",
+    grade: "B (7.9)",
+    highlight: true,
+  },
+  {
+    name: "Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo",
+    nameVn: "Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo",
+    grade: "B+ (8.0)",
+    highlight: true,
+  },
+  {
+    name: "Nguyên lý Ngôn ngữ Lập trình",
+    nameVn: "Nguyên lý Ngôn ngữ Lập trình",
+    grade: "A (8.6)",
+    highlight: true,
+  },
+  {
+    name: "Công nghệ Phần mềm",
+    nameVn: "Công nghệ Phần mềm",
+    grade: "A+ (9.5)",
+    highlight: true,
+  },
+  {
+    name: "Xác suất và Thống kê",
+    nameVn: "Xác suất và Thống kê",
+    grade: "A (9.4)",
+    highlight: true,
+  },
+  {
+    name: "Kỹ năng Chuyên nghiệp cho Kỹ sư",
+    nameVn: "Kỹ năng Chuyên nghiệp cho Kỹ sư",
+    grade: "A+ (9.5)",
+    highlight: true,
+  },
+  {
+    name: "Mô hình hóa Toán học",
+    nameVn: "Mô hình hóa Toán học",
+    grade: "B (7.2)",
+    highlight: false,
+  },
+  {
+    name: "Kiến trúc Máy tính",
+    nameVn: "Kiến trúc Máy tính",
+    grade: "B+ (8.1)",
+    highlight: true,
+  },
+  {
+    name: "Cấu trúc Dữ liệu và Giải Thuật",
+    nameVn: "Cấu trúc Dữ liệu và Giải Thuật",
+    grade: "A (8.6)",
+    highlight: true,
+  },
+  {
+    name: "Kỹ thuật Lập trình",
+    nameVn: "Kỹ thuật Lập trình",
+    grade: "B+ (8.2)",
+    highlight: true,
+  },
+  {
+    name: "Giải tích 2",
+    nameVn: "Giải tích 2",
+    grade: "A (9.2)",
+    highlight: true,
+  },
+  {
+    name: "Hệ thống số",
+    nameVn: "Hệ thống số",
+    grade: "B (7.9)",
+    highlight: false,
+  },
+  {
+    name: "Nhập môn Điện toán",
+    nameVn: "Nhập môn Điện toán",
+    grade: "B+ (8.4)",
+    highlight: false,
+  },
 ];
 
 export const experiences: Experience[] = [
   {
-    title: 'Computer Science Student',
-    titleVn: 'Sinh Viên KHMT',
-    company: 'HCMUT - Bach Khoa',
-    period: '2023 - Present',
-    description: 'Studying Computer Science with focus on Software Engineering, AI/ML, and System Design.',
-    descriptionVn: 'Học Khoa học Máy tính với trọng tâm Kỹ thuật Phần mềm, AI/ML, và Thiết kế Hệ thống.',
-    type: 'education',
-    achievements: ['GPA: 3.5/4.0', "Dean's List", 'Active in CS Club'],
-    achievementsVn: ['GPA: 3.5/4.0', 'Danh sách xuất sắc', 'Hoạt động CLB CNTT'],
-  },
-  {
-    title: 'Self-taught Developer',
-    titleVn: 'Tự Học Lập Trình',
-    company: 'Personal Projects',
-    period: '2022 - Present',
-    description: 'Building full-stack web applications, learning AI/ML, and contributing to open source.',
-    descriptionVn: 'Xây dựng ứng dụng web full-stack, học AI/ML, và đóng góp mã nguồn mở.',
-    type: 'experience',
-    achievements: ['5+ Projects', '100+ Commits', 'React & Node.js'],
-    achievementsVn: ['5+ Dự án', '100+ Commits', 'React & Node.js'],
+    title: "Computer Science Student",
+    titleVn: "Sinh Viên KHMT",
+    company: "HCMUT - Bach Khoa",
+    period: "2023 - Present",
+    description:
+      "Studying Computer Science with focus on Software Engineering, AI/ML, and System Design.",
+    descriptionVn:
+      "Học Khoa học Máy tính với trọng tâm Kỹ thuật Phần mềm, AI/ML, và Thiết kế Hệ thống.",
+    type: "education",
+    achievements: ["GPA: 3.5/4.0"],
+    achievementsVn: ["GPA: 3.5/4.0"],
   },
 ];

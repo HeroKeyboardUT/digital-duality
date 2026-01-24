@@ -16,6 +16,7 @@ export interface Project {
   featured?: boolean;
   hasDemo?: boolean;
   icon: string;
+  image?: string;
   links?: {
     github?: string;
     live?: string;
@@ -31,7 +32,7 @@ export interface FeaturedProject {
   description: string;
   descriptionVn: string;
   icon: string;
-  color: 'primary' | 'accent';
+  color: "primary" | "accent";
   github?: string;
   link?: string;
 }
@@ -50,6 +51,9 @@ export interface BlogPost {
   featured?: boolean;
   views?: number;
   icon: string;
+  content: string;
+  contentVn: string;
+  image?: string;
 }
 
 // ============ Navigation ============
@@ -107,7 +111,7 @@ export interface Experience {
   period: string;
   description: string;
   descriptionVn: string;
-  type?: 'education' | 'experience' | 'project';
+  type?: "education" | "experience" | "project";
   achievements?: string[];
   achievementsVn?: string[];
 }
@@ -155,7 +159,6 @@ export interface SkillCategory {
 export interface SoftSkill {
   name: string;
   nameVn: string;
-  icon: string;
 }
 
 export interface ProficiencyLevel {
@@ -169,8 +172,7 @@ export interface KnowledgeArea {
   id: string;
   name: string;
   nameVn: string;
-  icon: string;
-  level: 'advanced' | 'intermediate' | 'learning';
+  level: "advanced" | "intermediate" | "learning";
 }
 
 // ============ Stats ============

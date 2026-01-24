@@ -9,14 +9,10 @@ export {
   quickInfoItems,
   socialLinks,
   floatingActions,
-} from './profile';
+} from "./profile";
 
 // Education & Academic
-export {
-  education,
-  coursework,
-  experiences,
-} from './education';
+export { education, coursework, experiences } from "./education";
 
 // Skills & Knowledge
 export {
@@ -24,33 +20,16 @@ export {
   skillDescriptions,
   cvSkills,
   softSkills,
-  proficiencyLevels,
-  knowledgeAreas,
-} from './skills';
+} from "./skills";
 
 // Projects
-export {
-  projects,
-  projectCategories,
-  featuredProjects,
-} from './projects';
+export { projects, projectCategories, featuredProjects } from "./projects";
 
 // Blog Posts
-export {
-  blogPosts,
-  blogCategories,
-} from './blog-posts';
+export { blogPosts, blogCategories } from "./blog-posts";
 
 // Navigation & Sections
-export {
-  navLinks,
-  homeSections,
-  cvSections,
-} from './sections';
+export { navLinks, homeSections, cvSections } from "./sections";
 
 // Stats & Metrics
-export {
-  heroStats,
-  generalStats,
-  cvStats,
-} from './stats';
+export { heroStats, generalStats, cvStats } from "./stats";
