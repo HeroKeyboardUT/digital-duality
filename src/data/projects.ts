@@ -2,6 +2,125 @@ import type { Project, FeaturedProject } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "oplang-compiler",
+    title: "OPLang Compiler",
+    titleVn: "Trình Biên Dịch OPLang",
+    topic: "Compiler, ANTLR4, JVM, Python",
+    topicVn: "Trình Biên Dịch, ANTLR4, JVM, Python",
+    description:
+      "Full compiler for OPLang (custom OOP language): lexer, parser, AST, semantic analysis, JVM bytecode generation. 500+ automated tests, grade A project.",
+    descriptionVn:
+      "Trình biên dịch đầy đủ cho OPLang: phân tích từ vựng, cú pháp, AST, ngữ nghĩa, sinh mã JVM. 500+ test tự động, đạt điểm A.",
+    tech: ["Python", "ANTLR4", "Jasmin", "JVM", "pytest"],
+    category: "Compiler",
+    featured: true,
+    icon: "OP",
+    date: "2025-06",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",
+    links: {
+      github: "https://github.com/HeroKeyboardUT/OPLang-Compiler",
+    },
+    content: `
+## Overview
+
+A comprehensive compiler for OPLang, a custom object-oriented programming language developed for the Principle of Programming Languages course (CO3005) at HCMUT.
+
+## Compiler Pipeline
+
+- **Lexical Analysis**: Tokenization with ANTLR4
+- **Syntax Analysis**: Grammar-based parsing
+- **AST Generation**: Abstract syntax tree construction
+- **Semantic Analysis**: Type checking and scope management
+- **Code Generation**: Jasmin assembly targeting JVM
+
+## Achievements
+
+- Grade A for the course
+- 500+ automated tests passed
+- Full OOP support (classes, inheritance, methods)
+    `,
+    contentVn: `
+## Tổng Quan
+
+Trình biên dịch hoàn chỉnh cho OPLang, ngôn ngữ lập trình hướng đối tượng tự thiết kế cho môn Nguyên lý Ngôn ngữ Lập trình (CO3005) tại HCMUT.
+
+## Pipeline Biên Dịch
+
+- **Phân Tích Từ Vựng**: Tokenization với ANTLR4
+- **Phân Tích Cú Pháp**: Parsing dựa trên grammar
+- **Sinh AST**: Xây dựng cây cú pháp trừu tượng
+- **Phân Tích Ngữ Nghĩa**: Kiểm tra kiểu và quản lý scope
+- **Sinh Mã**: Assembly Jasmin cho JVM
+
+## Thành Tích
+
+- Đạt điểm A cho môn học
+- Vượt qua 500+ bài test tự động
+- Hỗ trợ đầy đủ OOP (class, kế thừa, phương thức)
+    `,
+  },
+  {
+    id: "hcmut-tutor-platform",
+    title: "HCMUT Tutoring Platform",
+    titleVn: "Nền Tảng Học Tập HCMUT",
+    topic: "Fullstack, Learning Management, React, Node.js",
+    topicVn: "Fullstack, Quản Lý Học Tập, React, Node.js",
+    description:
+      "Web platform for HCMUT students: personalized learning paths, progress tracking, resource library, and community forums.",
+    descriptionVn:
+      "Nền tảng web cho sinh viên HCMUT: lộ trình học cá nhân, theo dõi tiến độ, thư viện tài liệu, diễn đàn cộng đồng.",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    category: "Fullstack",
+    featured: true,
+    icon: "TU",
+    date: "2025-01",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop",
+    links: {
+      github:
+        "https://github.com/HeroKeyboardUT/HCMUT-Tutor-Support-System_CO3001",
+    },
+    content: `
+## Overview
+
+A modern web platform designed to help HCMUT students organize and track their learning journeys.
+
+## Key Features
+
+- **Learning Paths**: Create and manage custom study plans
+- **Progress Tracking**: Visual dashboards and statistics
+- **Resource Library**: Documents, videos, and exam materials
+- **Community Forums**: Q&A and collaborative learning
+
+## Technical Stack
+
+- Frontend: React with responsive UI
+- Backend: Node.js/Express
+- Database: MongoDB
+- Authentication and role-based access
+    `,
+    contentVn: `
+## Tổng Quan
+
+Nền tảng web hiện đại giúp sinh viên HCMUT tổ chức và theo dõi quá trình học tập.
+
+## Tính Năng Chính
+
+- **Lộ Trình Học**: Tạo và quản lý kế hoạch học tập
+- **Theo Dõi Tiến Độ**: Dashboard và thống kê trực quan
+- **Thư Viện Tài Liệu**: Tài liệu, video, đề thi
+- **Diễn Đàn Cộng Đồng**: Hỏi đáp và học tập nhóm
+
+## Công Nghệ
+
+- Frontend: React với UI responsive
+- Backend: Node.js/Express
+- Database: MongoDB
+- Xác thực và phân quyền
+    `,
+  },
+  {
     id: "rl-playground",
     title: "RL Grid World Playground",
     titleVn: "Sân Chơi RL Grid World",
@@ -300,7 +419,7 @@ Một web crawler chuyên dụng được thiết kế để thu thập cơ hộ
     featured: true,
     icon: "TS",
     date: "2023-09",
-    image: "/images/projects/tsp.png",
+    image: "/images/projects/TSP.png",
     links: {
       live: "https://herokeyboardut.github.io/CSPortfolio/TSP/index.html",
     },

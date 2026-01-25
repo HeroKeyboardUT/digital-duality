@@ -76,7 +76,7 @@ function BlogContent() {
                   />
                 </div>
                 <span className="text-xs font-mono text-muted-foreground">
-                  // KNOWLEDGE_BASE
+                  // KNOWLEDGE_BASE (Still Updating...)
                 </span>
               </div>
               <h1

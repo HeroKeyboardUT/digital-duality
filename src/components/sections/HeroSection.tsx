@@ -95,6 +95,7 @@ export function HeroSection() {
               </span>
               <span className="label-text">HCMUT // CS</span>
               <span className="label-text">LOCATION: BIEN HOA, VIETNAM</span>
+              <span className=" text-black">Website is still updating...</span>
             </motion.div>
 
             {/* Main Title */}

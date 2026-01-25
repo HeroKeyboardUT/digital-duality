@@ -79,7 +79,7 @@ function ProjectsContent() {
                   />
                 </div>
                 <span className="text-xs font-mono text-muted-foreground">
-                  // PROJECT_SHOWCASE
+                  // PROJECT_SHOWCASE (Still Updating...)
                 </span>
               </div>
               <h1
