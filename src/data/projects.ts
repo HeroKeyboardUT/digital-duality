@@ -87,7 +87,7 @@ Agent bắt đầu tại vị trí (0,0) và cố gắng đến mục tiêu tron
     featured: true,
     icon: "AI",
     date: "2024-04",
-    image: "/public/images/projects/CNNFER.png",
+    image: "/images/projects/CNNFER.png",
     links: {
       github: "https://github.com/TechWizGroup/Emotion_detection/tree/Hieu",
       pdf: "https://herokeyboardut.github.io/CSPortfolio/image/Emotional_detection.pdf",
@@ -142,7 +142,7 @@ Hệ thống AI phát hiện cảm xúc con người từ biểu cảm khuôn m�
     descriptionVn:
       "Ứng dụng web fullstack quản lý rạp phim: đặt vé, quản trị, dashboard thời gian thực. Một trong những dự án phức tạp nhất.",
     tech: ["ReactJS", "NodeJS", "ExpressJS", "TailwindCSS", "MySQL"],
-    image: "/public/images/projects/cineverse.png",
+    image: "/images/projects/cineverse.png",
     category: "Fullstack",
     featured: true,
     icon: "CM",
@@ -196,7 +196,7 @@ Hệ thống quản lý rạp phim toàn diện xử lý mọi thứ từ lập 
     featured: true,
     icon: "CH",
     date: "2024-03",
-    image: "/public/images/projects/stock.png",
+    image: "/images/projects/stock.png",
     links: { github: "https://github.com/HeroKeyboardUT/chatapp" },
     content: `
 ## Overview
@@ -244,7 +244,7 @@ Microservices-ready architecture with separate services for messaging, auth, and
     featured: true,
     icon: "CR",
     date: "2024-01",
-    image: "/public/images/projects/csecr.png",
+    image: "/images/projects/csecr.png",
     links: {
       github: "https://github.com/HeroKeyboardUT/HCMUT-CSE-Internship-Crawler",
     },
@@ -300,7 +300,7 @@ Một web crawler chuyên dụng được thiết kế để thu thập cơ hộ
     featured: true,
     icon: "TS",
     date: "2023-09",
-    image: "/public/images/projects/tsp.png",
+    image: "/images/projects/tsp.png",
     links: {
       live: "https://herokeyboardut.github.io/CSPortfolio/TSP/index.html",
     },
@@ -363,7 +363,7 @@ Dự án này triển khai thuật toán **Nhánh Cận**, đảm bảo tìm đ�
     category: "Algorithms",
     icon: "CS",
     date: "2023-11",
-    image: "/public/images/projects/stock.png",
+    image: "/images/projects/stock.png",
     links: {
       live: "https://herokeyboardut.github.io/CSPortfolio/CuttingStock/index.html",
     },
@@ -410,7 +410,7 @@ Sử dụng heuristic **First Fit Decreasing (FFD)**:
     category: "Tools",
     icon: "QA",
     date: "2023-10",
-    image: "/public/images/projects/quiz.png",
+    image: "/images/projects/quiz.png",
     links: {
       live: "https://herokeyboardut.github.io/CSPortfolio/Quizzapp/Home/index.html",
     },
