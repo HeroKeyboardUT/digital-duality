@@ -17,6 +17,10 @@ export interface Project {
   hasDemo?: boolean;
   icon: string;
   image?: string;
+  date?: string;
+  content?: string;
+  contentVn?: string;
+  isInteractive?: boolean;
   links?: {
     github?: string;
     live?: string;

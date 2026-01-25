@@ -78,7 +78,7 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid lg:grid-cols-[1fr,auto] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1fr,auto] gap-12 items-center border-b-2">
           {/* Left Content */}
           <div>
             {/* Top Labels */}
@@ -99,7 +99,7 @@ export function HeroSection() {
 
             {/* Main Title */}
             <motion.div
-              className="mb-8"
+              className="mb-8 border-y-2 py-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -116,7 +116,7 @@ export function HeroSection() {
                 </span>
               </h1>
               <div
-                className={`text-lg sm:text-xl font-mono flex items-center gap-2 ${theme === "dark" ? "text-primary cursor-blink" : ""}`}
+                className={`text-lg pl-2 sm:text-xl font-mono flex items-center gap-2 ${theme === "dark" ? "text-primary cursor-blink" : ""}`}
               >
                 {theme === "dark" && (
                   <Zap size={16} className="text-accent animate-pulse" />
@@ -130,7 +130,7 @@ export function HeroSection() {
 
             {/* Subtitle & Description */}
             <motion.div
-              className="mb-12"
+              className="mb-12 border-l-2 pl-8 ml-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -234,9 +234,9 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Side - Large Logo - Moved Up */}
+          {/* Right Side - Large Logo */}
           <motion.div
-            className="hidden lg:flex justify-center items-start relative -mt-16"
+            className="hidden lg:flex justify-center -mt-16 border-y-2"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}

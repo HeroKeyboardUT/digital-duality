@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useTheme, t } from '@/context/ThemeContext';
-import { motion } from 'framer-motion';
-import { Menu, X, Terminal, Cpu } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
-import { navLinks } from '@/data/navigation';
+import { useState, useEffect } from "react";
+import { useTheme, t } from "@/context/ThemeContext";
+import { motion } from "framer-motion";
+import { Menu, X, Terminal, Cpu } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { navLinks } from "@/data/navigation";
 
 export function Header() {
   const { theme, language, toggleTheme, toggleLanguage } = useTheme();
@@ -17,31 +17,45 @@ export function Header() {
   }, []);
 
   const formatTime = (date: Date) => {
-    return date.toISOString().slice(11, 19);
+    {
+      /* UTC+7 */
+    }
+    return date.toLocaleTimeString("en-GB", {
+      hour12: false,
+      timeZone: "Asia/Ho_Chi_Minh",
+    });
   };
 
   const isActive = (href: string) => {
-    if (href === '/') return location.pathname === '/';
+    if (href === "/") return location.pathname === "/";
     return location.pathname.startsWith(href);
   };
 
   return (
-    <header className={`border-b-[2px] border-foreground bg-background sticky top-0 z-50 ${theme === 'dark' ? 'glow-border' : ''}`}>
+    <header
+      className={`border-b-[2px] border-foreground bg-background sticky top-0 z-50 ${theme === "dark" ? "glow-border" : ""}`}
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="flex items-center justify-between h-14 px-4">
           {/* Logo - Text Only */}
           <motion.div whileHover={{ scale: 1.05 }}>
-            <Link 
+            <Link
               to="/"
               className="flex items-center gap-2 font-sans font-black text-lg tracking-tight"
             >
-              {theme === 'dark' ? (
+              {theme === "dark" ? (
                 <Terminal size={20} className="text-accent" />
               ) : (
                 <Cpu size={20} />
               )}
-              <span className={theme === 'dark' ? 'neon-text' : ''}>HIEU</span>
-              <span className={theme === 'dark' ? 'text-accent' : 'text-muted-foreground'}>DZ</span>
+              <span className={theme === "dark" ? "neon-text" : ""}>HIEU</span>
+              <span
+                className={
+                  theme === "dark" ? "text-accent" : "text-muted-foreground"
+                }
+              >
+                DZ
+              </span>
             </Link>
           </motion.div>
 
@@ -53,14 +67,20 @@ export function Header() {
                   to={link.href}
                   className={`text-xs font-bold uppercase tracking-wider transition-colors relative group ${
                     isActive(link.href)
-                      ? theme === 'dark' ? 'text-accent' : 'text-foreground'
-                      : theme === 'dark' ? 'hover:text-accent' : 'hover:text-muted-foreground'
+                      ? theme === "dark"
+                        ? "text-accent"
+                        : "text-foreground"
+                      : theme === "dark"
+                        ? "hover:text-accent"
+                        : "hover:text-muted-foreground"
                   }`}
                 >
                   {t(language, link.label, link.labelVn)}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
-                    isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
-                  } ${theme === 'dark' ? 'bg-accent' : 'bg-foreground'}`} />
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
+                      isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                    } ${theme === "dark" ? "bg-accent" : "bg-foreground"}`}
+                  />
                 </Link>
               </motion.div>
             ))}
@@ -69,7 +89,9 @@ export function Header() {
           {/* Right Side Controls */}
           <div className="flex items-center gap-3">
             {/* Time Display */}
-            <div className={`hidden lg:flex items-center gap-2 text-[10px] ${theme === 'dark' ? 'text-flicker' : ''}`}>
+            <div
+              className={`hidden lg:flex items-center gap-2 text-[10px] ${theme === "dark" ? "text-flicker" : ""}`}
+            >
               <span className="label-text">UTC</span>
               <span className="font-mono tabular-nums">{formatTime(time)}</span>
             </div>
@@ -77,41 +99,43 @@ export function Header() {
             {/* Status */}
             <div className="hidden sm:flex items-center gap-2 text-[10px]">
               <div className="status-online" />
-              <span className="font-mono">{t(language, 'ONLINE', 'TRỰC TUYẾN')}</span>
+              <span className="font-mono">
+                {t(language, "ONLINE", "TRỰC TUYẾN")}
+              </span>
             </div>
 
             {/* Language Toggle */}
             <motion.button
               onClick={toggleLanguage}
               className={`px-2 py-1 border-2 border-foreground text-[10px] font-bold transition-all ${
-                theme === 'dark' 
-                  ? 'cyber-btn hover:shadow-[0_0_15px_hsl(var(--neon-cyan))]' 
-                  : 'hover:bg-foreground hover:text-background'
+                theme === "dark"
+                  ? "cyber-btn hover:shadow-[0_0_15px_hsl(var(--neon-cyan))]"
+                  : "hover:bg-foreground hover:text-background"
               }`}
               whileTap={{ scale: 0.95 }}
             >
-              {language === 'en' ? 'EN' : 'VN'}
+              {language === "en" ? "EN" : "VN"}
             </motion.button>
 
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
               className={`px-3 py-1 border-2 border-foreground text-[10px] font-bold transition-all ${
-                theme === 'dark' 
-                  ? 'cyber-btn pulse-border hover:shadow-[0_0_20px_hsl(var(--neon-cyan))]' 
-                  : 'hover:bg-foreground hover:text-background'
+                theme === "dark"
+                  ? "cyber-btn pulse-border hover:shadow-[0_0_20px_hsl(var(--neon-cyan))]"
+                  : "hover:bg-foreground hover:text-background"
               }`}
               whileTap={{ scale: 0.95 }}
             >
-              <span className={theme === 'dark' ? 'text-flicker' : ''}>
-                {theme === 'light' ? 'CYBER' : 'ANALOG'}
+              <span className={theme === "dark" ? "text-flicker" : ""}>
+                {theme === "light" ? "CYBER" : "ANALOG"}
               </span>
             </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-2 border-2 border-foreground ${theme === 'dark' ? 'cyber-btn' : ''}`}
+              className={`md:hidden p-2 border-2 border-foreground ${theme === "dark" ? "cyber-btn" : ""}`}
               whileTap={{ scale: 0.95 }}
             >
               {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
@@ -124,7 +148,7 @@ export function Header() {
           <motion.nav
             className="md:hidden border-t-2 border-foreground"
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
           >
             {navLinks.map((link) => (
@@ -134,10 +158,12 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-bold uppercase border-b border-foreground/20 transition-colors ${
                   isActive(link.href)
-                    ? theme === 'dark' ? 'text-accent bg-primary/10' : 'bg-muted'
-                    : theme === 'dark' 
-                      ? 'hover:bg-primary/10 hover:text-accent' 
-                      : 'hover:bg-foreground hover:text-background'
+                    ? theme === "dark"
+                      ? "text-accent bg-primary/10"
+                      : "bg-muted"
+                    : theme === "dark"
+                      ? "hover:bg-primary/10 hover:text-accent"
+                      : "hover:bg-foreground hover:text-background"
                 }`}
               >
                 {t(language, link.label, link.labelVn)}
