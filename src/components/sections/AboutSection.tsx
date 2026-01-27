@@ -83,6 +83,7 @@ export function AboutSection() {
               <div className="label-text mb-3">
                 {t(language, "BIOGRAPHY", "TIỂU SỬ")}
               </div>
+              {/* <p className="pb-4">{t(language, "Try Hard!!", "Try Hard!!")}</p> */}
               <p className="text-sm leading-relaxed mb-4 border-l-2 pl-4 ml-4">
                 {t(
                   language,
@@ -221,7 +222,7 @@ export function AboutSection() {
                   {
                     skill: "AI/Deep Learning",
                     skillVn: "AI/Deep Learning",
-                    level: 60,
+                    level: 70,
                   },
                   {
                     skill: "Problem Solving",

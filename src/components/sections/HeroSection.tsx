@@ -19,29 +19,34 @@ export function HeroSection() {
       id="hero"
       className="min-h-[90vh] flex flex-col justify-center relative py-20 px-4 overflow-hidden"
     >
-      {/* Background Effects for Cyber Mode */}
+      {/* Background Effects for Cyber Mode - Optimized */}
       {theme === "dark" && (
         <>
-          <div className="absolute inset-0 hex-pattern pointer-events-none" />
+          <div
+            className="absolute inset-0 hex-pattern pointer-events-none"
+            style={{ transform: "translateZ(0)" }}
+          />
           <div className="scan-line" />
-          {/* Floating particles */}
+          {/* Floating particles - reduced count, CSS animation for better perf */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(20)].map((_, i) => (
+            {[...Array(8)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-primary rounded-full"
+                className="absolute w-1 h-1 bg-primary rounded-full will-change-transform"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  left: `${12.5 * i + 6}%`,
+                  top: `${(i * 17) % 100}%`,
+                  transform: "translateZ(0)",
                 }}
                 animate={{
-                  y: [0, -30, 0],
-                  opacity: [0.2, 0.8, 0.2],
+                  y: [0, -25, 0],
+                  opacity: [0.3, 0.7, 0.3],
                 }}
                 transition={{
-                  duration: 3 + Math.random() * 2,
+                  duration: 4 + (i % 3),
                   repeat: Infinity,
-                  delay: Math.random() * 2,
+                  delay: i * 0.5,
+                  ease: "easeInOut",
                 }}
               />
             ))}
@@ -162,6 +167,13 @@ export function HeroSection() {
                   "Tôi là lập trình viên đang học tại Đại học Bách Khoa TP.HCM. Tôi quan tâm đến Khoa học Máy tính và đang tìm kiếm cơ hội thực tập để nâng cao kỹ năng và tích lũy kinh nghiệm.",
                 )}
               </p>
+              <span
+                className={
+                  theme === "dark" ? "text-accent" : "text-muted-foreground"
+                }
+              >
+                // {t(language, "Chuyên gánh bài tập lớn!!", "Project Lead!!")}
+              </span>
 
               <div
                 className={`${theme === "dark" ? "grid-cell glow-border" : "grid-cell hover-lift"} mt-6`}
@@ -184,7 +196,7 @@ export function HeroSection() {
                   </li>
                   <li>
                     <span className="text-muted-foreground">GPA:</span> 3.5 /
-                    4.0
+                    4.0 (8.28 / 10)
                   </li>
                 </ul>
               </div>

@@ -1,31 +1,45 @@
-import { useTheme } from '@/context/ThemeContext';
+import { useTheme } from "@/context/ThemeContext";
+import { memo } from "react";
 
-export function CRTOverlay() {
+// Memoized to prevent unnecessary re-renders
+export const CRTOverlay = memo(function CRTOverlay() {
   const { theme } = useTheme();
 
-  if (theme !== 'dark') return null;
+  if (theme !== "dark") return null;
 
   return (
     <>
-      {/* Scanlines */}
-      <div className="crt-overlay" />
-      
-      {/* Vignette effect */}
-      <div 
-        className="fixed inset-0 pointer-events-none z-[9998]"
+      {/* Scanlines - GPU accelerated */}
+      <div
+        className="crt-overlay"
         style={{
-          background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)',
+          willChange: "auto",
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
         }}
       />
 
-      {/* Subtle screen flicker */}
-      <div 
-        className="fixed inset-0 pointer-events-none z-[9997] opacity-[0.015]"
+      {/* Vignette effect - static, no animation needed */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[9998]"
         style={{
-          background: 'linear-gradient(180deg, transparent 0%, rgba(0,243,255,0.1) 50%, transparent 100%)',
-          animation: 'scan 4s linear infinite',
+          background:
+            "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.35) 100%)",
+          transform: "translateZ(0)",
+        }}
+      />
+
+      {/* Subtle screen flicker - optimized with longer duration */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[9997] opacity-[0.02]"
+        style={{
+          background:
+            "linear-gradient(180deg, transparent 0%, rgba(0,243,255,0.08) 50%, transparent 100%)",
+          animation: "scan 6s linear infinite",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
     </>
   );
-}
+});
