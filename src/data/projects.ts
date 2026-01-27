@@ -366,6 +366,7 @@ Microservices-ready architecture with separate services for messaging, auth, and
     image: "/images/projects/csecr.png",
     links: {
       github: "https://github.com/HeroKeyboardUT/HCMUT-CSE-Internship-Crawler",
+      live: "https://hcmut-cse-internship-crawler-production.up.railway.app/",
     },
     content: `
 ## Overview
