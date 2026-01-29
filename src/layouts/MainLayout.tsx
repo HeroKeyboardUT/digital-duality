@@ -25,9 +25,9 @@ export function MainLayout({
       <LoadingScreen />
       <div className="min-h-screen flex flex-col bg-background">
         <PageProgress />
-        <CursorFollower />
+        {/* <CursorFollower /> */}
         <GlitchTransition />
-        <CRTOverlay />
+        {/* <CRTOverlay /> */}
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
