@@ -360,7 +360,7 @@ function RLPlaygroundContent() {
       if (exploreStrat === "softmax") {
         const maxQ = Math.max(...qValues);
         const expValues = qValues.map((q) => Math.exp((q - maxQ) / temp));
-        const sum =go expValues.reduce((a, b) => a + b, 0);
+        const sum = expValues.reduce((a, b) => a + b, 0);
         const probs = expValues.map((e) => e / sum);
 
         const r = Math.random();
