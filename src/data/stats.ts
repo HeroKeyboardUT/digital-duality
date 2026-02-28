@@ -12,14 +12,6 @@ export const heroStats: Stat[] = [
   { label: "Major", labelVn: "Chuyên Ngành", value: "CS" },
 ];
 
-// General stats for stats module (can be updated for different contexts)
-export const generalStats: Stat[] = [
-  { label: "YEARS EXP", labelVn: "NĂM KINH NGHIỆM", value: "2+" },
-  { label: "PROJECTS", labelVn: "DỰ ÁN", value: "7+" },
-  { label: "COMMITS", labelVn: "COMMITS", value: "100+" },
-  { label: "TECHNOLOGIES", labelVn: "CÔNG NGHỆ", value: "15+" },
-];
-
 // CV page stats
 export const cvStats: Stat[] = [
   {

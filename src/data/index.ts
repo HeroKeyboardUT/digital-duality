@@ -32,4 +32,4 @@ export { blogPosts, blogCategories } from "./blog-posts";
 export { navLinks, homeSections, cvSections } from "./sections";
 
 // Stats & Metrics
-export { heroStats, generalStats, cvStats } from "./stats";
+export { heroStats, cvStats } from "./stats";

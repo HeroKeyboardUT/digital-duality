@@ -5,6 +5,7 @@ export const navLinks: NavLink[] = [
   { href: '/cv', label: 'CV', labelVn: 'CV' },
   { href: '/projects', label: 'Projects', labelVn: 'Dự Án' },
   { href: '/blog', label: 'Blog', labelVn: 'Blog' },
+  { href: '/utility', label: 'Utility', labelVn: 'Tiện Ích' },
 ];
 
 export const socialLinks: SocialLink[] = [

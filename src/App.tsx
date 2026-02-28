@@ -10,6 +10,8 @@ import Blog from "./pages/Blog";
 import ProjectDetail from "./pages/ProjectDetail";
 import BlogDetail from "./pages/BlogDetail";
 import RLPlayground from "./pages/RLPlayground";
+import Utility from "./pages/Utility";
+import HcmutInternship from "./pages/HcmutInternship";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/rl-playground" element={<RLPlayground />} />
+          <Route path="/utility" element={<Utility />} />
+          <Route path="/utility/hcmut-internship" element={<HcmutInternship />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
